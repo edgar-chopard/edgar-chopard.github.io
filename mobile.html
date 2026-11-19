@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Edgar Chopard — Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&amp;family=Geist+Mono:wght@400..600&amp;display=swap">
+<style>
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:#ffffff;color:#0b0b0c;font-family:'Geist',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;-webkit-tap-highlight-color:transparent}
+*,*::before,*::after{box-sizing:border-box}
+h1,h2,h3,p,figure,ul,ol{margin:0;padding:0}
+img{display:block;max-width:100%}
+a{color:#1a66e0;text-decoration:none}
+a:hover{color:#0d4fb5}
+::selection{background:#d6e4ff;color:#0b0b0c}
+body{font-optical-sizing:auto}
+@media (prefers-reduced-transparency: reduce){header{background:#ffffff !important;backdrop-filter:none !important;-webkit-backdrop-filter:none !important}}
+@keyframes edgarBlink{0%,49.9%{opacity:1}50%,100%{opacity:.18}}
+</style>
+</helmet>
+
+<header ref="{{ headerRef }}" style="position:fixed; top:0; left:0; right:0; z-index:100; margin:0 auto; max-width:430px; background:rgba(255,255,255,0.9); backdrop-filter:saturate(180%) blur(20px); -webkit-backdrop-filter:saturate(180%) blur(20px); box-shadow:{{ hdrShadow }}; transition:box-shadow 0.3s ease">
+  <div style="height:48px; padding:0 16px 0 20px; display:flex; align-items:center; justify-content:space-between; gap:12px">
+    <a href="#top" onClick="{{ jump }}" style="font-size:15px; font-weight:650; letter-spacing:-0.018em; color:#0b0b0c; text-decoration:none; white-space:nowrap">Edgar Chopard</a>
+    <div style="display:flex; align-items:center; gap:6px">
+      <a href="#contact" onClick="{{ jump }}" style="display:inline-flex; align-items:center; height:30px; padding:0 13px; border-radius:999px; background:#0b0b0c; color:#ffffff; font-size:12.5px; font-weight:500; text-decoration:none; white-space:nowrap; transition:transform 0.12s ease-out" style-active="transform:scale(0.96)">Me contacter</a>
+      <button type="button" aria-label="Projets" onClick="{{ toggleMenu }}" style="width:40px; height:40px; border:0; background:transparent; padding:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; cursor:pointer">
+        <span style="display:block; width:18px; height:1.5px; border-radius:2px; background:#0b0b0c; transition:transform 0.3s; transform:{{ bar1 }}"></span>
+        <span style="display:block; width:18px; height:1.5px; border-radius:2px; background:#0b0b0c; transition:transform 0.3s; transform:{{ bar2 }}"></span>
+      </button>
+    </div>
+  </div>
+  <nav aria-label="Projets" aria-hidden="{{ menuHidden }}" style="padding:{{ menuPad }}; display:flex; flex-direction:column; overflow:hidden; max-height:{{ menuH }}; opacity:{{ menuO }}; transform:{{ menuT }}; transform-origin:top right; pointer-events:{{ menuPE }}; transition:{{ menuTr }}">
+      <a href="#mini-tank-rc" onClick="{{ jump }}" style="display:flex; align-items:center; justify-content:space-between; height:48px; border-top:1px solid rgba(0,0,0,0.08); font-size:17px; font-weight:600; letter-spacing:-0.015em; color:{{ nav.tank }}; text-decoration:none"><span>Mini Tank RC</span><span style="font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; color:#8e8e96">01</span></a>
+      <a href="#lit-connecte" onClick="{{ jump }}" style="display:flex; align-items:center; justify-content:space-between; height:48px; border-top:1px solid rgba(0,0,0,0.08); font-size:17px; font-weight:600; letter-spacing:-0.015em; color:{{ nav.lit }}; text-decoration:none"><span>Lit Connecté</span><span style="font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; color:#8e8e96">02</span></a>
+      <a href="#cyberline" onClick="{{ jump }}" style="display:flex; align-items:center; justify-content:space-between; height:48px; border-top:1px solid rgba(0,0,0,0.08); font-size:17px; font-weight:600; letter-spacing:-0.015em; color:{{ nav.cyber }}; text-decoration:none"><span>Cyberline</span><span style="font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; color:#8e8e96">03</span></a>
+      <a href="#frigo-connecte" onClick="{{ jump }}" style="display:flex; align-items:center; justify-content:space-between; height:48px; border-top:1px solid rgba(0,0,0,0.08); font-size:17px; font-weight:600; letter-spacing:-0.015em; color:{{ nav.frigo }}; text-decoration:none"><span>Frigo Connecté</span><span style="font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; color:#8e8e96">04</span></a>
+    </nav>
+</header>
+
+<div style="max-width:430px; margin:0 auto; overflow:hidden">
+
+<section id="top" data-screen-label="01 Accueil" style="padding:96px 20px 56px; background:#ffffff; color:#0b0b0c; display:flex; flex-direction:column; align-items:center; text-align:center">
+  <div data-intro="0" style="width:116px; height:116px; border-radius:50%; overflow:hidden; background:#f0f0f2">
+    <img src="assets/portrait.jpg" alt="Edgar Chopard" decoding="async" style="display:block; width:100%; height:100%; object-fit:cover">
+  </div>
+  <p data-intro="1" style="margin:22px 0 0; font-size:15px; font-weight:600; letter-spacing:-0.01em; color:#6b6b70">Portfolio de projets personnels</p>
+  <h1 data-intro="2" style="margin:6px 0 0; font-size:44px; font-weight:700; letter-spacing:-0.05em; line-height:1">Edgar Chopard</h1>
+  <p data-intro="3" style="margin:16px 0 0; font-size:16.5px; line-height:1.5; color:#424247; text-wrap:balance">Ce portfolio réunit quatre projets d’ingénierie personnels conçus et réalisés de A à Z : mécanique, électronique embarquée, impression 3D, systèmes embarqués et domotique.</p>
+  <div data-intro="4" style="margin-top:24px; display:flex; gap:10px; justify-content:center">
+    <a href="#projets" onClick="{{ jump }}" style="display:inline-flex; align-items:center; gap:8px; height:44px; padding:0 20px; border-radius:999px; background:#0b0b0c; color:#ffffff; font-size:15.5px; font-weight:500; text-decoration:none; transition:transform 0.12s ease-out" style-active="transform:scale(0.96)">Mes projets<span aria-hidden="true">↓</span></a>
+    <a href="#contact" onClick="{{ jump }}" style="display:inline-flex; align-items:center; height:44px; padding:0 20px; border-radius:999px; color:#0b0b0c; box-shadow:inset 0 0 0 1.5px #0b0b0c; font-size:15.5px; font-weight:500; text-decoration:none; transition:transform 0.12s ease-out" style-active="transform:scale(0.96)">Me contacter</a>
+  </div>
+</section>
+
+<section id="projets" data-screen-label="02 Mes projets" style="background:#000000; color:#f4f4f5; padding:48px 20px 52px">
+  <h2 data-reveal="1" style="margin:0; font-size:32px; font-weight:700; letter-spacing:-0.035em; line-height:1">Mes projets</h2>
+  <div data-reveal="1" style="margin-top:22px; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:10px">
+    <a href="#mini-tank-rc" onClick="{{ jump }}" style="display:flex; flex-direction:column; border-radius:18px; overflow:hidden; background:#161618; color:#f4f4f5; text-decoration:none; transition:transform 0.12s ease-out" style-active="transform:scale(0.98)">
+      <img src="assets/image1.jpg" alt="Mini Tank RC" decoding="async" style="width:100%; aspect-ratio:4/5; object-fit:cover; background:#1c1c1f">
+      <div style="flex:1; display:flex; flex-direction:column; gap:4px; padding:11px 12px 13px">
+        <span style="font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:10.5px; letter-spacing:0.06em; color:#8e8e96">01</span>
+        <span style="font-size:16px; font-weight:650; letter-spacing:-0.02em; line-height:1.15">Mini Tank RC</span>
+        <span style="font-size:12.5px; line-height:1.35; color:#a8a8ae">Robot télécommandé – tourelle 2 axes – FPV</span>
+        <span style="margin-top:auto; padding-top:8px; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:10px; line-height:1.5; color:#8e8e96">Arduino • Impression 3D • Fibre de carbone • FPV</span>
+      </div>
+    </a>
+    <a href="#lit-connecte" onClick="{{ jump }}" style="display:flex; flex-direction:column; border-radius:18px; overflow:hidden; background:#161618; color:#f4f4f5; text-decoration:none; transition:transform 0.12s ease-out" style-active="transform:scale(0.98)">
+      <img src="assets/image2.jpg" alt="Lit Connecté" decoding="async" style="width:100%; aspect-ratio:4/5; object-fit:cover; background:#1c1c1f">
+      <div style="flex:1; display:flex; flex-direction:column; gap:4px; padding:11px 12px 13px">
+        <span style="font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:10.5px; letter-spacing:0.06em; color:#8e8e96">02</span>
+        <span style="font-size:16px; font-weight:650; letter-spacing:-0.02em; line-height:1.15">Lit Connecté</span>
+        <span style="font-size:12.5px; line-height:1.35; color:#a8a8ae">Réveil intelligent par détection de présence</span>
+        <span style="margin-top:auto; padding-top:8px; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:10px; line-height:1.5; color:#8e8e96">ESP8266 • Cellules de force • Domotique • iOS</span>
+      </div>
+    </a>
+    <a href="#cyberline" onClick="{{ jump }}" style="display:flex; flex-direction:column; border-radius:18px; overflow:hidden; background:#161618; color:#f4f4f5; text-decoration:none; transition:transform 0.12s ease-out" style-active="transform:scale(0.98)">
+      <img src="assets/image3.jpg" alt="Cyberline" decoding="async" style="width:100%; aspect-ratio:4/5; object-fit:cover; background:#1c1c1f">
+      <div style="flex:1; display:flex; flex-direction:column; gap:4px; padding:11px 12px 13px">
+        <span style="font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:10.5px; letter-spacing:0.06em; color:#8e8e96">03</span>
+        <span style="font-size:16px; font-weight:650; letter-spacing:-0.02em; line-height:1.15">Cyberline</span>
+        <span style="font-size:12.5px; line-height:1.35; color:#a8a8ae">Robot suiveur de ligne inspiré du Cybertruck</span>
+        <span style="margin-top:auto; padding-top:8px; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:10px; line-height:1.5; color:#8e8e96">Arduino Uni • CAO Fusion 360 • Android • Impression 3D</span>
+      </div>
+    </a>
+    <a href="#frigo-connecte" onClick="{{ jump }}" style="display:flex; flex-direction:column; border-radius:18px; overflow:hidden; background:#161618; color:#f4f4f5; text-decoration:none; transition:transform 0.12s ease-out" style-active="transform:scale(0.98)">
+      <img src="assets/image4.jpg" alt="Frigo Connecté" decoding="async" style="width:100%; aspect-ratio:4/5; object-fit:cover; background:#1c1c1f">
+      <div style="flex:1; display:flex; flex-direction:column; gap:4px; padding:11px 12px 13px">
+        <span style="font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:10.5px; letter-spacing:0.06em; color:#8e8e96">04</span>
+        <span style="font-size:16px; font-weight:650; letter-spacing:-0.02em; line-height:1.15">Frigo Connecté</span>
+        <span style="font-size:12.5px; line-height:1.35; color:#a8a8ae">Surveillance IoT de chambre froide</span>
+        <span style="margin-top:auto; padding-top:8px; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:10px; line-height:1.5; color:#8e8e96">ESP8266 • DS18B20 • IoT • Blynk</span>
+      </div>
+    </a>
+  </div>
+  <p data-reveal="1" style="margin:22px 0 0; font-size:14.5px; line-height:1.5; color:#a8a8ae">Tous les codes sources et fichiers 3D sont disponibles sur mon GitHub : <a href="https://github.com/edgarcity?tab=repositories" target="_blank" rel="noopener" style="color:#5aa2ff; font-weight:500; white-space:nowrap">github.com/edgarcity ↗</a></p>
+</section>
+
+<div id="mini-tank-rc">
+  <section data-screen-label="03 Mini Tank RC" style="background:#ffffff; color:#0b0b0c; padding:56px 20px 48px">
+    <div data-reveal="1">
+      <p style="margin:0; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:12px; font-weight:500; letter-spacing:0.06em; color:#6b6b70">01</p>
+      <h2 style="margin:8px 0 0; font-size:44px; font-weight:700; letter-spacing:-0.045em; line-height:0.98">Mini Tank RC</h2>
+      <p style="margin:12px 0 0; font-size:17px; font-weight:500; letter-spacing:-0.01em; line-height:1.35; color:#6b6b70">Robot télécommandé – 4 roues motrices – Tourelle 2 axes – Canon billes de gel – FPV</p>
+      <div style="display:flex; flex-wrap:wrap; gap:6px; margin-top:16px">
+        <span style="font-size:12px; font-weight:500; line-height:1; padding:7px 11px; border-radius:999px; background:#f0f0f2; color:#3a3a3e">Arduino</span>
+        <span style="font-size:12px; font-weight:500; line-height:1; padding:7px 11px; border-radius:999px; background:#f0f0f2; color:#3a3a3e">Impression 3D</span>
+        <span style="font-size:12px; font-weight:500; line-height:1; padding:7px 11px; border-radius:999px; background:#f0f0f2; color:#3a3a3e">Fibre de carbone</span>
+        <span style="font-size:12px; font-weight:500; line-height:1; padding:7px 11px; border-radius:999px; background:#f0f0f2; color:#3a3a3e">FPV</span>
+        <span style="font-size:12px; font-weight:500; line-height:1; padding:7px 11px; border-radius:999px; background:#f0f0f2; color:#3a3a3e">Télécommande RC</span>
+      </div>
+    </div>
+    <div data-reveal="1" style="margin-top:28px; padding-top:18px; border-top:1px solid rgba(0,0,0,0.1); display:flex; flex-direction:column; gap:8px">
+      <p style="margin:0; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:#6b6b70">Présentation du projet</p>
+      <h3 style="margin:0; font-size:19px; font-weight:650; letter-spacing:-0.015em; line-height:1.2">Concept</h3>
+      <p style="margin:0; font-size:17.5px; font-weight:500; letter-spacing:-0.01em; line-height:1.42">Un tank télécommandé conçu et fabriqué intégralement : structure en aluminium, MDF et fibre de carbone assemblée par des pièces imprimées en 3D, 4 roues motrices indépendantes, une tourelle orientable sur 2 axes et un système de tir à billes de gel. Le tout piloté par radio FlySky 2,4 GHz avec retour vidéo FPV 5,8 GHz.</p>
+    </div>
+    <div data-reveal="1" style="margin-top:20px">
+      <div data-slider="tankHero" onScroll="{{ onSlide }}" style="display:flex; gap:10px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; margin:0 -20px; padding:0 20px; scroll-padding:0 20px; overscroll-behavior-x:contain">
+        <figure style="margin:0; flex:0 0 calc(100% - 28px); scroll-snap-align:start">
+          <div style="position:relative; aspect-ratio:3/4; border-radius:16px; overflow:hidden; background:#f0f0f2; box-sizing:border-box">
+            <img src="assets/image1.jpg" alt="Tank – tourelle en position, LED bleues" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:contain">
+            <span style="position:absolute; top:10px; right:10px; padding:5px 9px; border-radius:999px; background:rgba(0,0,0,0.55); color:#ffffff; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; line-height:1">1 / 2</span>
+          </div>
+          <figcaption style="margin-top:7px; font-size:12px; line-height:1.4; color:#6b6b70">Tank – tourelle en position, LED bleues</figcaption>
+        </figure>
+        <figure style="margin:0; flex:0 0 calc(100% - 28px); scroll-snap-align:start">
+          <div style="position:relative; aspect-ratio:3/4; border-radius:16px; overflow:hidden; background:#f0f0f2; box-sizing:border-box">
+            <img src="assets/image5.jpg" alt="Tank – LED rouges" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:contain">
+            <span style="position:absolute; top:10px; right:10px; padding:5px 9px; border-radius:999px; background:rgba(0,0,0,0.55); color:#ffffff; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; line-height:1">2 / 2</span>
+          </div>
+          <figcaption style="margin-top:7px; font-size:12px; line-height:1.4; color:#6b6b70">Tank – LED rouges</figcaption>
+        </figure>
+        <div aria-hidden="true" style="flex:0 0 10px"></div>
+      </div>
+      <div style="margin-top:12px; display:flex; align-items:center; justify-content:space-between; gap:12px">
+        <div style="display:flex; align-items:center; gap:6px">
+          <span style="display:block; height:6px; border-radius:3px; transition:width 0.3s, background-color 0.3s; width:{{ sl.tankHero.w0 }}; background:{{ sl.tankHero.c0 }}"></span>
+          <span style="display:block; height:6px; border-radius:3px; transition:width 0.3s, background-color 0.3s; width:{{ sl.tankHero.w1 }}; background:{{ sl.tankHero.c1 }}"></span>
+          <span style="margin-left:6px; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; letter-spacing:0.04em; color:#6b6b70">Glisser →</span>
+        </div>
+        <div style="display:flex; gap:8px">
+          <button type="button" aria-label="Image précédente" data-target="tankHero" data-dir="-1" onClick="{{ slideBtn }}" style="width:36px; height:36px; border-radius:50%; border:0; padding:0; background:#f0f0f2; color:#0b0b0c; font-size:18px; line-height:1; cursor:pointer; transition:opacity 0.2s, transform 0.12s ease-out; opacity:{{ sl.tankHero.prev }}" style-active="transform:scale(0.96)">‹</button>
+          <button type="button" aria-label="Image suivante" data-target="tankHero" data-dir="1" onClick="{{ slideBtn }}" style="width:36px; height:36px; border-radius:50%; border:0; padding:0; background:#f0f0f2; color:#0b0b0c; font-size:18px; line-height:1; cursor:pointer; transition:opacity 0.2s, transform 0.12s ease-out; opacity:{{ sl.tankHero.next }}" style-active="transform:scale(0.96)">›</button>
+        </div>
+      </div>
+    </div>
+    <div data-reveal="1" style="margin-top:28px; padding-top:18px; border-top:1px solid rgba(0,0,0,0.1)">
+      <h3 style="margin:0; font-size:19px; font-weight:650; letter-spacing:-0.015em; line-height:1.2">Design 3D</h3>
+    </div>
+    <div data-reveal="1" style="margin-top:14px; aspect-ratio:4/5; border-radius:18px; overflow:hidden; background:radial-gradient(120% 90% at 50% 35%, #ffffff 0%, #f4f4f6 55%, #e9e9ec 100%)">
+      <x-import component-from-global-scope="cyberline-3d" from="./cyberline-3d.js" src="assets/minitank" label="Modèle 3D du Mini Tank RC" fallback="assets/image1.jpg" compact="1" style="display:block; width:100%; height:100%" hint-size="100%,100%"></x-import>
+    </div>
+  </section>
+
+  <section data-screen-label="05 Mini Tank RC — Électronique embarquée" style="background:#000000; color:#f4f4f5; padding:48px 20px">
+    <div data-reveal="1">
+      <p style="margin:0; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:#8e8e96">Mini Tank RC</p>
+      <h2 style="margin:8px 0 0; font-size:30px; font-weight:700; letter-spacing:-0.03em; line-height:1.08">Électronique embarquée</h2>
+    </div>
+    <div data-reveal="1" style="margin-top:22px; padding-top:18px; border-top:1px solid rgba(255,255,255,0.16); display:flex; flex-direction:column; gap:8px">
+      <h3 style="margin:0; font-size:19px; font-weight:650; letter-spacing:-0.015em; line-height:1.2">Électronique – boîte de commande</h3>
+      <p style="margin:0; font-size:16px; line-height:1.58; color:#a8a8ae">Toute l’électronique est logée dans une boîte imprimée en 3D fixée, accessible en un geste par un couvercle à aimants. Le récepteur FlySky FS-iA6 distribue les ordres : les canaux mouvements partent vers l’ESC, les canaux tourelle vers les servos moteurs, les canaux tir et LED vers l’Arduino Nano. Le régulateur LM2596 abaisse la tension de la LiPo 2S à 5V pour les composants logiques.</p>
+    </div>
+    <div data-reveal="1" style="margin-top:16px">
+      <div data-slider="tankElec" onScroll="{{ onSlide }}" style="display:flex; gap:10px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; margin:0 -20px; padding:0 20px; scroll-padding:0 20px; overscroll-behavior-x:contain">
+        <figure style="margin:0; flex:0 0 calc(100% - 28px); scroll-snap-align:start">
+          <div style="position:relative; aspect-ratio:1/1; border-radius:16px; overflow:hidden; background:#141416">
+            <img src="assets/image6.jpg" alt="Dessous du chassis – batterie LiPo 2S, câblage et moteurs" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:contain">
+            <span style="position:absolute; top:10px; right:10px; padding:5px 9px; border-radius:999px; background:rgba(0,0,0,0.55); color:#ffffff; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; line-height:1">1 / 2</span>
+          </div>
+          <figcaption style="margin-top:7px; font-size:12px; line-height:1.4; color:#8e8e96">Dessous du chassis – batterie LiPo 2S, câblage et moteurs</figcaption>
+        </figure>
+        <figure style="margin:0; flex:0 0 calc(100% - 28px); scroll-snap-align:start">
+          <div style="position:relative; aspect-ratio:1/1; border-radius:16px; overflow:hidden; background:#141416">
+            <img src="assets/image7.jpg" alt="Boîte électronique – récepteur FS-iA6, relais, ESC, régulateur LM2596" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:contain">
+            <span style="position:absolute; top:10px; right:10px; padding:5px 9px; border-radius:999px; background:rgba(0,0,0,0.55); color:#ffffff; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; line-height:1">2 / 2</span>
+          </div>
+          <figcaption style="margin-top:7px; font-size:12px; line-height:1.4; color:#8e8e96">Boîte électronique – récepteur FS-iA6, relais, ESC, régulateur LM2596</figcaption>
+        </figure>
+        <div aria-hidden="true" style="flex:0 0 10px"></div>
+      </div>
+      <div style="margin-top:12px; display:flex; align-items:center; justify-content:space-between; gap:12px">
+        <div style="display:flex; align-items:center; gap:6px">
+          <span style="display:block; height:6px; border-radius:3px; transition:width 0.3s, background-color 0.3s; width:{{ sl.tankElec.w0 }}; background:{{ sl.tankElec.c0 }}"></span>
+          <span style="display:block; height:6px; border-radius:3px; transition:width 0.3s, background-color 0.3s; width:{{ sl.tankElec.w1 }}; background:{{ sl.tankElec.c1 }}"></span>
+          <span style="margin-left:6px; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; letter-spacing:0.04em; color:#8e8e96">Glisser →</span>
+        </div>
+        <div style="display:flex; gap:8px">
+          <button type="button" aria-label="Image précédente" data-target="tankElec" data-dir="-1" onClick="{{ slideBtn }}" style="width:36px; height:36px; border-radius:50%; border:0; padding:0; background:#1c1c1f; color:#f4f4f5; font-size:18px; line-height:1; cursor:pointer; transition:opacity 0.2s, transform 0.12s ease-out; opacity:{{ sl.tankElec.prev }}" style-active="transform:scale(0.96)">‹</button>
+          <button type="button" aria-label="Image suivante" data-target="tankElec" data-dir="1" onClick="{{ slideBtn }}" style="width:36px; height:36px; border-radius:50%; border:0; padding:0; background:#1c1c1f; color:#f4f4f5; font-size:18px; line-height:1; cursor:pointer; transition:opacity 0.2s, transform 0.12s ease-out; opacity:{{ sl.tankElec.next }}" style-active="transform:scale(0.96)">›</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section data-screen-label="05b Mini Tank RC — Arduino Nano" style="background:#ffffff; color:#0b0b0c; padding:40px 20px">
+    <div data-reveal="1" style="display:flex; flex-direction:column; gap:8px">
+      <h3 style="margin:0; font-size:19px; font-weight:650; letter-spacing:-0.015em; line-height:1.2">Arduino Nano – logique de tir &amp; LED</h3>
+      <p style="margin:0; font-size:16px; line-height:1.58; color:#424247">L'Arduino Nano gère le système de tir, le laser et les LED RGB. Le récepteur FlySky envoie des signaux PWM sur chaque canal. J'ai dû faire de la rétro-ingénierie pour comprendre la logique du signal PWM reçu par l'Arduino. Puis j’ai mappé chaque canal à une action : tir, laser, couleur des LED. L'Arduino lit le signal du canal dédié, active le relais pour lancer le moteur du canon à billes de gel, allume le laser de visée et change la couleur des LED selon le mode en cours.</p>
+    </div>
+    <figure data-reveal="1" style="margin:16px auto 0; width:72%">
+      <img src="assets/image8.jpg" alt="Arduino Nano" loading="lazy" decoding="async" style="width:100%; aspect-ratio:3/4; object-fit:cover; border-radius:14px; background:#f0f0f2">
+      <figcaption style="margin-top:7px; font-size:12px; line-height:1.4; color:#6b6b70">Arduino Nano</figcaption>
+    </figure>
+  </section>
+
+  <section data-screen-label="06 Mini Tank RC — Système vidéo &amp; Structure" style="background:#000000; color:#f4f4f5; padding:48px 20px">
+    <div data-reveal="1">
+      <p style="margin:0; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:#8e8e96">Mini Tank RC</p>
+      <h2 style="margin:8px 0 0; font-size:30px; font-weight:700; letter-spacing:-0.03em; line-height:1.08">Système vidéo &amp; Structure</h2>
+    </div>
+    <div data-reveal="1" style="margin-top:22px; padding-top:18px; border-top:1px solid rgba(255,255,255,0.16); display:flex; flex-direction:column; gap:8px">
+      <h3 style="margin:0; font-size:19px; font-weight:650; letter-spacing:-0.015em; line-height:1.2">Système vidéo FPV</h3>
+      <p style="margin:0; font-size:16px; line-height:1.58; color:#a8a8ae">J’utilise le même système vidéo FPV 5,8 GHz que sur mes drones FPV : une caméra grand angle fixée sur la tourelle envoie le flux en temps réel vers un écran.</p>
+    </div>
+    <div data-reveal="1" style="margin-top:16px">
+      <div data-slider="tankFpv" onScroll="{{ onSlide }}" style="display:flex; gap:10px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; margin:0 -20px; padding:0 20px; scroll-padding:0 20px; overscroll-behavior-x:contain">
+        <figure style="margin:0; flex:0 0 calc(100% - 28px); scroll-snap-align:start">
+          <div style="position:relative; aspect-ratio:4/3; border-radius:16px; overflow:hidden; background:#141416">
+            <img src="assets/image9.jpg" alt="Écran FPV 5,8 GHz – retour vidéo en temps réel" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:contain">
+            <span style="position:absolute; top:10px; right:10px; padding:5px 9px; border-radius:999px; background:rgba(0,0,0,0.55); color:#ffffff; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; line-height:1">1 / 2</span>
+          </div>
+          <figcaption style="margin-top:7px; font-size:12px; line-height:1.4; color:#8e8e96">Écran FPV 5,8 GHz – retour vidéo en temps réel</figcaption>
+        </figure>
+        <figure style="margin:0; flex:0 0 calc(100% - 28px); scroll-snap-align:start">
+          <div style="position:relative; aspect-ratio:4/3; border-radius:16px; overflow:hidden; background:#141416">
+            <img src="assets/image10.jpg" alt="Caméra grand angle montée sur la tourelle" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:contain">
+            <span style="position:absolute; top:10px; right:10px; padding:5px 9px; border-radius:999px; background:rgba(0,0,0,0.55); color:#ffffff; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; line-height:1">2 / 2</span>
+          </div>
+          <figcaption style="margin-top:7px; font-size:12px; line-height:1.4; color:#8e8e96">Caméra grand angle montée sur la tourelle</figcaption>
+        </figure>
+        <div aria-hidden="true" style="flex:0 0 10px"></div>
+      </div>
+      <div style="margin-top:12px; display:flex; align-items:center; justify-content:space-between; gap:12px">
+        <div style="display:flex; align-items:center; gap:6px">
+          <span style="display:block; height:6px; border-radius:3px; transition:width 0.3s, background-color 0.3s; width:{{ sl.tankFpv.w0 }}; background:{{ sl.tankFpv.c0 }}"></span>
+          <span style="display:block; height:6px; border-radius:3px; transition:width 0.3s, background-color 0.3s; width:{{ sl.tankFpv.w1 }}; background:{{ sl.tankFpv.c1 }}"></span>
+          <span style="margin-left:6px; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; letter-spacing:0.04em; color:#8e8e96">Glisser →</span>
+        </div>
+        <div style="display:flex; gap:8px">
+          <button type="button" aria-label="Image précédente" data-target="tankFpv" data-dir="-1" onClick="{{ slideBtn }}" style="width:36px; height:36px; border-radius:50%; border:0; padding:0; background:#1c1c1f; color:#f4f4f5; font-size:18px; line-height:1; cursor:pointer; transition:opacity 0.2s, transform 0.12s ease-out; opacity:{{ sl.tankFpv.prev }}" style-active="transform:scale(0.96)">‹</button>
+          <button type="button" aria-label="Image suivante" data-target="tankFpv" data-dir="1" onClick="{{ slideBtn }}" style="width:36px; height:36px; border-radius:50%; border:0; padding:0; background:#1c1c1f; color:#f4f4f5; font-size:18px; line-height:1; cursor:pointer; transition:opacity 0.2s, transform 0.12s ease-out; opacity:{{ sl.tankFpv.next }}" style-active="transform:scale(0.96)">›</button>
+        </div>
+      </div>
+    </div>
+    <div data-reveal="1" style="margin-top:28px; padding-top:18px; border-top:1px solid rgba(255,255,255,0.16); display:flex; flex-direction:column; gap:8px">
+      <h3 style="margin:0; font-size:19px; font-weight:650; letter-spacing:-0.015em; line-height:1.2">Plaques de fibre de carbone</h3>
+      <p style="margin:0; font-size:16px; line-height:1.58; color:#a8a8ae">Les panneaux latéraux sont découpés dans des plaques de fibre de carbone vrais : découpe à la Dremel, ajustés à la main, fixés sur les montants imprimés en 3D par des vis inox. En plus de l’aspect tactique, le carbone est léger et rigide.</p>
+    </div>
+    <div data-reveal="1" style="margin-top:16px">
+      <div data-slider="tankCarbon" onScroll="{{ onSlide }}" style="display:flex; gap:10px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; margin:0 -20px; padding:0 20px; scroll-padding:0 20px; overscroll-behavior-x:contain">
+        <figure style="margin:0; flex:0 0 calc(100% - 28px); scroll-snap-align:start">
+          <div style="position:relative; aspect-ratio:4/3; border-radius:16px; overflow:hidden; background:#141416">
+            <img src="assets/image11.jpg" alt="Découpe des plaques carbone à la Dremel" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:contain">
+            <span style="position:absolute; top:10px; right:10px; padding:5px 9px; border-radius:999px; background:rgba(0,0,0,0.55); color:#ffffff; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; line-height:1">1 / 2</span>
+          </div>
+          <figcaption style="margin-top:7px; font-size:12px; line-height:1.4; color:#8e8e96">Découpe des plaques carbone à la Dremel</figcaption>
+        </figure>
+        <figure style="margin:0; flex:0 0 calc(100% - 28px); scroll-snap-align:start">
+          <div style="position:relative; aspect-ratio:4/3; border-radius:16px; overflow:hidden; background:#141416">
+            <img src="assets/image12.jpg" alt="Plaque carbone assemblée sur le chassis" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:contain">
+            <span style="position:absolute; top:10px; right:10px; padding:5px 9px; border-radius:999px; background:rgba(0,0,0,0.55); color:#ffffff; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; line-height:1">2 / 2</span>
+          </div>
+          <figcaption style="margin-top:7px; font-size:12px; line-height:1.4; color:#8e8e96">Plaque carbone assemblée sur le chassis</figcaption>
+        </figure>
+        <div aria-hidden="true" style="flex:0 0 10px"></div>
+      </div>
+      <div style="margin-top:12px; display:flex; align-items:center; justify-content:space-between; gap:12px">
+        <div style="display:flex; align-items:center; gap:6px">
+          <span style="display:block; height:6px; border-radius:3px; transition:width 0.3s, background-color 0.3s; width:{{ sl.tankCarbon.w0 }}; background:{{ sl.tankCarbon.c0 }}"></span>
+          <span style="display:block; height:6px; border-radius:3px; transition:width 0.3s, background-color 0.3s; width:{{ sl.tankCarbon.w1 }}; background:{{ sl.tankCarbon.c1 }}"></span>
+          <span style="margin-left:6px; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; letter-spacing:0.04em; color:#8e8e96">Glisser →</span>
+        </div>
+        <div style="display:flex; gap:8px">
+          <button type="button" aria-label="Image précédente" data-target="tankCarbon" data-dir="-1" onClick="{{ slideBtn }}" style="width:36px; height:36px; border-radius:50%; border:0; padding:0; background:#1c1c1f; color:#f4f4f5; font-size:18px; line-height:1; cursor:pointer; transition:opacity 0.2s, transform 0.12s ease-out; opacity:{{ sl.tankCarbon.prev }}" style-active="transform:scale(0.96)">‹</button>
+          <button type="button" aria-label="Image suivante" data-target="tankCarbon" data-dir="1" onClick="{{ slideBtn }}" style="width:36px; height:36px; border-radius:50%; border:0; padding:0; background:#1c1c1f; color:#f4f4f5; font-size:18px; line-height:1; cursor:pointer; transition:opacity 0.2s, transform 0.12s ease-out; opacity:{{ sl.tankCarbon.next }}" style-active="transform:scale(0.96)">›</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="07 Mini Tank RC — Résultats &amp; Bilan" style="background:#ffffff; color:#0b0b0c; padding:48px 20px">
+    <div data-reveal="1">
+      <p style="margin:0; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:#6b6b70">Mini Tank RC</p>
+      <h2 style="margin:8px 0 0; font-size:30px; font-weight:700; letter-spacing:-0.03em; line-height:1.08">Résultats &amp; Bilan</h2>
+    </div>
+    <div data-reveal="1" style="margin-top:18px; padding:2px 16px; border-radius:18px; background:#f4f4f6">
+      <div style="display:flex; gap:12px; align-items:flex-start; padding:14px 0"><span style="width:20px; height:20px; margin-top:1px; border-radius:50%; background:#0b0b0c; display:flex; align-items:center; justify-content:center; flex:none"><span style="width:5px; height:9px; border-right:1.8px solid #ffffff; border-bottom:1.8px solid #ffffff; transform:translateY(-1px) rotate(45deg)"></span></span><span style="font-size:15.5px; font-weight:500; line-height:1.42">Tank fonctionnel, piloté à la radio FlySky avec portée &gt; 50 m</span></div>
+      <div style="display:flex; gap:12px; align-items:flex-start; padding:14px 0; border-top:1px solid rgba(0,0,0,0.08)"><span style="width:20px; height:20px; margin-top:1px; border-radius:50%; background:#0b0b0c; display:flex; align-items:center; justify-content:center; flex:none"><span style="width:5px; height:9px; border-right:1.8px solid #ffffff; border-bottom:1.8px solid #ffffff; transform:translateY(-1px) rotate(45deg)"></span></span><span style="font-size:15.5px; font-weight:500; line-height:1.42">Tourelle orientable avec visée laser et retour vidéo FPV en temps réel</span></div>
+      <div style="display:flex; gap:12px; align-items:flex-start; padding:14px 0; border-top:1px solid rgba(0,0,0,0.08)"><span style="width:20px; height:20px; margin-top:1px; border-radius:50%; background:#0b0b0c; display:flex; align-items:center; justify-content:center; flex:none"><span style="width:5px; height:9px; border-right:1.8px solid #ffffff; border-bottom:1.8px solid #ffffff; transform:translateY(-1px) rotate(45deg)"></span></span><span style="font-size:15.5px; font-weight:500; line-height:1.42">Système de tir billes de gel fiable, activé par relais depuis la radio</span></div>
+      <div style="display:flex; gap:12px; align-items:flex-start; padding:14px 0; border-top:1px solid rgba(0,0,0,0.08)"><span style="width:20px; height:20px; margin-top:1px; border-radius:50%; background:#0b0b0c; display:flex; align-items:center; justify-content:center; flex:none"><span style="width:5px; height:9px; border-right:1.8px solid #ffffff; border-bottom:1.8px solid #ffffff; transform:translateY(-1px) rotate(45deg)"></span></span><span style="font-size:15.5px; font-weight:500; line-height:1.42">Structure hybride alu / MDF / carbone / impression 3D : solide et légère</span></div>
+      <div style="display:flex; gap:12px; align-items:flex-start; padding:14px 0; border-top:1px solid rgba(0,0,0,0.08)"><span style="width:20px; height:20px; margin-top:1px; border-radius:50%; background:#0b0b0c; display:flex; align-items:center; justify-content:center; flex:none"><span style="width:5px; height:9px; border-right:1.8px solid #ffffff; border-bottom:1.8px solid #ffffff; transform:translateY(-1px) rotate(45deg)"></span></span><span style="font-size:15.5px; font-weight:500; line-height:1.42">Démontage rapide : couvercle boîte et panneaux horizontal à aimants, sans outil</span></div>
+      <div style="display:flex; gap:12px; align-items:flex-start; padding:14px 0; border-top:1px solid rgba(0,0,0,0.08)"><span style="width:20px; height:20px; margin-top:1px; border-radius:50%; background:#0b0b0c; display:flex; align-items:center; justify-content:center; flex:none"><span style="width:5px; height:9px; border-right:1.8px solid #ffffff; border-bottom:1.8px solid #ffffff; transform:translateY(-1px) rotate(45deg)"></span></span><span style="font-size:15.5px; font-weight:500; line-height:1.42">Compétences : CAO Fusion 360, électronique embarquée, systèmes RC &amp; FPV, usinage carbone</span></div>
+    </div>
+  </section>
+</div>
+
+<div id="lit-connecte">
+  <section data-screen-label="08 Lit Connecté" style="background:#000000; color:#f4f4f5; padding:56px 20px 48px">
+    <div data-reveal="1">
+      <p style="margin:0; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:12px; font-weight:500; letter-spacing:0.06em; color:#8e8e96">02</p>
+      <h2 style="margin:8px 0 0; font-size:44px; font-weight:700; letter-spacing:-0.045em; line-height:0.98">Lit Connecté</h2>
+      <p style="margin:12px 0 0; font-size:17px; font-weight:500; letter-spacing:-0.01em; line-height:1.35; color:#a1a1a8">Réveil intelligent par détection de présence</p>
+      <div style="display:flex; flex-wrap:wrap; gap:6px; margin-top:16px">
+        <span style="font-size:12px; font-weight:500; line-height:1; padding:7px 11px; border-radius:999px; background:#1c1c1f; color:#d4d4da">ESP8266</span>
+        <span style="font-size:12px; font-weight:500; line-height:1; padding:7px 11px; border-radius:999px; background:#1c1c1f; color:#d4d4da">Capteur de force</span>
+        <span style="font-size:12px; font-weight:500; line-height:1; padding:7px 11px; border-radius:999px; background:#1c1c1f; color:#d4d4da">Impression 3D</span>
+        <span style="font-size:12px; font-weight:500; line-height:1; padding:7px 11px; border-radius:999px; background:#1c1c1f; color:#d4d4da">Domotique</span>
+        <span style="font-size:12px; font-weight:500; line-height:1; padding:7px 11px; border-radius:999px; background:#1c1c1f; color:#d4d4da">Home Automation</span>
+      </div>
+    </div>
+    <div data-reveal="1" style="margin-top:28px; padding-top:18px; border-top:1px solid rgba(255,255,255,0.16); display:flex; flex-direction:column; gap:8px">
+      <p style="margin:0; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:#8e8e96">Présentation du projet</p>
+      <h3 style="margin:0; font-size:19px; font-weight:650; letter-spacing:-0.015em; line-height:1.2">Contexte</h3>
+      <p style="margin:0; font-size:17.5px; font-weight:500; letter-spacing:-0.01em; line-height:1.42">J'ai une alarme sur mon téléphone. Elle me réveille et lève automatiquement le rideau de ma chambre. Si je ne suis pas levé de mon lit au bout de 5 minutes, le système se déclenche : un haut-parleur intégré dans le boîtier joue de la musique et s'arrête dès que je me lève. Impossible de tricher : les capteurs sous les pieds du lit savent exactement si je suis toujours couché.</p>
+    </div>
+  </section>
+
+  <section data-screen-label="09 Lit Connecté — Déroulement d’un réveil" style="background:#ffffff; color:#0b0b0c; padding:48px 20px">
+    <div data-reveal="1">
+      <p style="margin:0; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:#6b6b70">Lit Connecté</p>
+      <h2 style="margin:8px 0 0; font-size:30px; font-weight:700; letter-spacing:-0.03em; line-height:1.08">Déroulement d’un réveil</h2>
+    </div>
+    <ol data-reveal="1" style="list-style:none; margin:22px 0 0; padding:0">
+      <li style="display:grid; grid-template-columns:28px minmax(0,1fr); column-gap:14px">
+        <div style="display:flex; flex-direction:column; align-items:center"><span style="width:28px; height:28px; border-radius:50%; box-shadow:inset 0 0 0 1.5px #0b0b0c; display:flex; align-items:center; justify-content:center; flex:none; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:12px; font-weight:500">1</span><span style="flex:1; width:1.5px; margin:6px 0; background:rgba(0,0,0,0.14)"></span></div>
+        <p style="margin:0; padding:3px 0 20px; font-size:16px; font-weight:500; line-height:1.45">L’alarme iPhone sonne <span style="color:#9a9aa0">→</span> le Raccourci Apple envoie la requête HTTP vers l’ESP8266</p>
+      </li>
+      <li style="display:grid; grid-template-columns:28px minmax(0,1fr); column-gap:14px">
+        <div style="display:flex; flex-direction:column; align-items:center"><span style="width:28px; height:28px; border-radius:50%; box-shadow:inset 0 0 0 1.5px #0b0b0c; display:flex; align-items:center; justify-content:center; flex:none; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:12px; font-weight:500">2</span><span style="flex:1; width:1.5px; margin:6px 0; background:rgba(0,0,0,0.14)"></span></div>
+        <p style="margin:0; padding:3px 0 20px; font-size:16px; font-weight:500; line-height:1.45">L’ESP8266 actionne le relais soudé sur la télécommande du rideau <span style="color:#9a9aa0">→</span> le rideau se lève</p>
+      </li>
+      <li style="display:grid; grid-template-columns:28px minmax(0,1fr); column-gap:14px">
+        <div style="display:flex; flex-direction:column; align-items:center"><span style="width:28px; height:28px; border-radius:50%; box-shadow:inset 0 0 0 1.5px #0b0b0c; display:flex; align-items:center; justify-content:center; flex:none; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:12px; font-weight:500">3</span><span style="flex:1; width:1.5px; margin:6px 0; background:rgba(0,0,0,0.14)"></span></div>
+        <p style="margin:0; padding:3px 0 20px; font-size:16px; font-weight:500; line-height:1.45">Décompte de 5 minutes démarre en tâche de fond sur le microcontrôleur</p>
+      </li>
+      <li style="display:grid; grid-template-columns:28px minmax(0,1fr); column-gap:14px">
+        <div style="display:flex; flex-direction:column; align-items:center"><span style="width:28px; height:28px; border-radius:50%; box-shadow:inset 0 0 0 1.5px #0b0b0c; display:flex; align-items:center; justify-content:center; flex:none; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:12px; font-weight:500">4</span><span style="flex:1; width:1.5px; margin:6px 0; background:rgba(0,0,0,0.14)"></span></div>
+        <p style="margin:0; padding:3px 0 20px; font-size:16px; font-weight:500; line-height:1.45">Levé avant 5 min : les capteurs détectent l’absence de poids <span style="color:#9a9aa0">→</span> rien ne se passe</p>
+      </li>
+      <li style="display:grid; grid-template-columns:28px minmax(0,1fr); column-gap:14px">
+        <div style="display:flex; flex-direction:column; align-items:center"><span style="width:28px; height:28px; border-radius:50%; box-shadow:inset 0 0 0 1.5px #0b0b0c; display:flex; align-items:center; justify-content:center; flex:none; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:12px; font-weight:500">5</span><span style="flex:1; width:1.5px; margin:6px 0; background:rgba(0,0,0,0.14)"></span></div>
+        <p style="margin:0; padding:3px 0 20px; font-size:16px; font-weight:500; line-height:1.45">Toujours dans le lit à 5 min : le DFPlayer Mini lance la musique depuis la carte SD</p>
+      </li>
+      <li style="display:grid; grid-template-columns:28px minmax(0,1fr); column-gap:14px">
+        <div style="display:flex; flex-direction:column; align-items:center"><span style="width:28px; height:28px; border-radius:50%; background:#0b0b0c; color:#ffffff; display:flex; align-items:center; justify-content:center; flex:none; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:12px; font-weight:500">6</span></div>
+        <p style="margin:0; padding:3px 0 0; font-size:16px; font-weight:500; line-height:1.45">La musique continue tant que je suis encore couché, s’arrête dès que je me lève</p>
+      </li>
+    </ol>
+    <div data-reveal="1" style="margin-top:28px; padding-top:18px; border-top:1px solid rgba(0,0,0,0.1)">
+      <h3 style="margin:0; font-size:19px; font-weight:650; letter-spacing:-0.015em; line-height:1.2">Installation physique</h3>
+    </div>
+    <div data-reveal="1" style="margin-top:14px">
+      <div data-slider="litInstall" onScroll="{{ onSlide }}" style="display:flex; gap:10px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; margin:0 -20px; padding:0 20px; scroll-padding:0 20px; overscroll-behavior-x:contain">
+        <figure style="margin:0; flex:0 0 calc(100% - 28px); scroll-snap-align:start">
+          <div style="position:relative; aspect-ratio:4/3; border-radius:16px; overflow:hidden; background:#f0f0f2">
+            <img src="assets/image13.jpg" alt="Boîtier ESP8266 et télécommande du rideau" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:contain">
+            <span style="position:absolute; top:10px; right:10px; padding:5px 9px; border-radius:999px; background:rgba(0,0,0,0.55); color:#ffffff; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; line-height:1">1 / 2</span>
+          </div>
+          <figcaption style="margin-top:7px; font-size:12px; line-height:1.4; color:#6b6b70">Boîtier ESP8266 et télécommande du rideau</figcaption>
+        </figure>
+        <figure style="margin:0; flex:0 0 calc(100% - 28px); scroll-snap-align:start">
+          <div style="position:relative; aspect-ratio:4/3; border-radius:16px; overflow:hidden; background:#f0f0f2">
+            <img src="assets/image14.jpg" alt="Support cellule de force sous un pied du lit" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:contain">
+            <span style="position:absolute; top:10px; right:10px; padding:5px 9px; border-radius:999px; background:rgba(0,0,0,0.55); color:#ffffff; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; line-height:1">2 / 2</span>
+          </div>
+          <figcaption style="margin-top:7px; font-size:12px; line-height:1.4; color:#6b6b70">Support cellule de force sous un pied du lit</figcaption>
+        </figure>
+        <div aria-hidden="true" style="flex:0 0 10px"></div>
+      </div>
+      <div style="margin-top:12px; display:flex; align-items:center; justify-content:space-between; gap:12px">
+        <div style="display:flex; align-items:center; gap:6px">
+          <span style="display:block; height:6px; border-radius:3px; transition:width 0.3s, background-color 0.3s; width:{{ sl.litInstall.w0 }}; background:{{ sl.litInstall.c0 }}"></span>
+          <span style="display:block; height:6px; border-radius:3px; transition:width 0.3s, background-color 0.3s; width:{{ sl.litInstall.w1 }}; background:{{ sl.litInstall.c1 }}"></span>
+          <span style="margin-left:6px; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; letter-spacing:0.04em; color:#6b6b70">Glisser →</span>
+        </div>
+        <div style="display:flex; gap:8px">
+          <button type="button" aria-label="Image précédente" data-target="litInstall" data-dir="-1" onClick="{{ slideBtn }}" style="width:36px; height:36px; border-radius:50%; border:0; padding:0; background:#f0f0f2; color:#0b0b0c; font-size:18px; line-height:1; cursor:pointer; transition:opacity 0.2s, transform 0.12s ease-out; opacity:{{ sl.litInstall.prev }}" style-active="transform:scale(0.96)">‹</button>
+          <button type="button" aria-label="Image suivante" data-target="litInstall" data-dir="1" onClick="{{ slideBtn }}" style="width:36px; height:36px; border-radius:50%; border:0; padding:0; background:#f0f0f2; color:#0b0b0c; font-size:18px; line-height:1; cursor:pointer; transition:opacity 0.2s, transform 0.12s ease-out; opacity:{{ sl.litInstall.next }}" style-active="transform:scale(0.96)">›</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="10 Lit Connecté — Électronique assemblée" style="background:#000000; color:#f4f4f5; padding:48px 20px">
+    <div data-reveal="1">
+      <p style="margin:0; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:#8e8e96">Lit Connecté</p>
+      <h2 style="margin:8px 0 0; font-size:30px; font-weight:700; letter-spacing:-0.03em; line-height:1.08">Électronique assemblée</h2>
+    </div>
+    <div data-reveal="1" style="margin-top:22px; padding-top:18px; border-top:1px solid rgba(255,255,255,0.16)">
+      <h3 style="margin:0; font-size:19px; font-weight:650; letter-spacing:-0.015em; line-height:1.2">PCB : Composants assemblés</h3>
+    </div>
+    <div data-reveal="1" style="margin-top:14px">
+      <div data-slider="litPcb" onScroll="{{ onSlide }}" style="display:flex; gap:10px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; margin:0 -20px; padding:0 20px; scroll-padding:0 20px; overscroll-behavior-x:contain">
+        <figure style="margin:0; flex:0 0 calc(100% - 28px); scroll-snap-align:start">
+          <div style="position:relative; aspect-ratio:4/3; border-radius:16px; overflow:hidden; background:#141416">
+            <img src="assets/image15.jpg" alt="Face soudure" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:contain">
+            <span style="position:absolute; top:10px; right:10px; padding:5px 9px; border-radius:999px; background:rgba(0,0,0,0.55); color:#ffffff; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; line-height:1">1 / 2</span>
+          </div>
+          <figcaption style="margin-top:7px; font-size:12px; line-height:1.4; color:#8e8e96">Face soudure</figcaption>
+        </figure>
+        <figure style="margin:0; flex:0 0 calc(100% - 28px); scroll-snap-align:start">
+          <div style="position:relative; aspect-ratio:4/3; border-radius:16px; overflow:hidden; background:#141416">
+            <img src="assets/image16.jpg" alt="PCB assemblée – ESP8266, HX711, DFPlayer Mini, relais" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:contain">
+            <span style="position:absolute; top:10px; right:10px; padding:5px 9px; border-radius:999px; background:rgba(0,0,0,0.55); color:#ffffff; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; line-height:1">2 / 2</span>
+          </div>
+          <figcaption style="margin-top:7px; font-size:12px; line-height:1.4; color:#8e8e96">PCB assemblée – ESP8266, HX711, DFPlayer Mini, relais</figcaption>
+        </figure>
+        <div aria-hidden="true" style="flex:0 0 10px"></div>
+      </div>
+      <div style="margin-top:12px; display:flex; align-items:center; justify-content:space-between; gap:12px">
+        <div style="display:flex; align-items:center; gap:6px">
+          <span style="display:block; height:6px; border-radius:3px; transition:width 0.3s, background-color 0.3s; width:{{ sl.litPcb.w0 }}; background:{{ sl.litPcb.c0 }}"></span>
+          <span style="display:block; height:6px; border-radius:3px; transition:width 0.3s, background-color 0.3s; width:{{ sl.litPcb.w1 }}; background:{{ sl.litPcb.c1 }}"></span>
+          <span style="margin-left:6px; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; letter-spacing:0.04em; color:#8e8e96">Glisser →</span>
+        </div>
+        <div style="display:flex; gap:8px">
+          <button type="button" aria-label="Image précédente" data-target="litPcb" data-dir="-1" onClick="{{ slideBtn }}" style="width:36px; height:36px; border-radius:50%; border:0; padding:0; background:#1c1c1f; color:#f4f4f5; font-size:18px; line-height:1; cursor:pointer; transition:opacity 0.2s, transform 0.12s ease-out; opacity:{{ sl.litPcb.prev }}" style-active="transform:scale(0.96)">‹</button>
+          <button type="button" aria-label="Image suivante" data-target="litPcb" data-dir="1" onClick="{{ slideBtn }}" style="width:36px; height:36px; border-radius:50%; border:0; padding:0; background:#1c1c1f; color:#f4f4f5; font-size:18px; line-height:1; cursor:pointer; transition:opacity 0.2s, transform 0.12s ease-out; opacity:{{ sl.litPcb.next }}" style-active="transform:scale(0.96)">›</button>
+        </div>
+      </div>
+    </div>
+    <div data-reveal="1" style="margin-top:28px; padding-top:18px; border-top:1px solid rgba(255,255,255,0.16); display:flex; flex-direction:column; gap:8px">
+      <h3 style="margin:0; font-size:19px; font-weight:650; letter-spacing:-0.015em; line-height:1.2">Raccourci Apple &amp; Télécommande rideau</h3>
+      <p style="margin:0; font-size:16px; line-height:1.58; color:#a8a8ae">Le Raccourci Apple est configuré une seule fois : dès qu’une alarme se déclenche, il appelle automatiquement l’URL du serveur web de l’ESP8266. Pas d’application tierce, pas de configuration quotidienne. Le rideau est piloté par un relais soudé sur les contacts du bouton de la télécommande, identifiés par rétro-ingénierie.</p>
+    </div>
+    <div data-reveal="1" style="margin-top:16px">
+      <div data-slider="litShortcut" onScroll="{{ onSlide }}" style="display:flex; gap:10px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; margin:0 -20px; padding:0 20px; scroll-padding:0 20px; overscroll-behavior-x:contain">
+        <figure style="margin:0; flex:0 0 calc(100% - 28px); scroll-snap-align:start">
+          <div style="position:relative; aspect-ratio:3/4; border-radius:16px; overflow:hidden; background:#141416; box-sizing:border-box">
+            <img src="assets/image17.jpg" alt="Raccourci Apple – déclenchement automatique à chaque alarme" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:contain">
+            <span style="position:absolute; top:10px; right:10px; padding:5px 9px; border-radius:999px; background:rgba(0,0,0,0.55); color:#ffffff; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; line-height:1">1 / 2</span>
+          </div>
+          <figcaption style="margin-top:7px; font-size:12px; line-height:1.4; color:#8e8e96">Raccourci Apple – déclenchement automatique à chaque alarme</figcaption>
+        </figure>
+        <figure style="margin:0; flex:0 0 calc(100% - 28px); scroll-snap-align:start">
+          <div style="position:relative; aspect-ratio:3/4; border-radius:16px; overflow:hidden; background:#141416; box-sizing:border-box">
+            <img src="assets/image18.jpg" alt="Télécommande ouverte – fils soudés sur les contacts du bouton" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:contain">
+            <span style="position:absolute; top:10px; right:10px; padding:5px 9px; border-radius:999px; background:rgba(0,0,0,0.55); color:#ffffff; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; line-height:1">2 / 2</span>
+          </div>
+          <figcaption style="margin-top:7px; font-size:12px; line-height:1.4; color:#8e8e96">Télécommande ouverte – fils soudés sur les contacts du bouton</figcaption>
+        </figure>
+        <div aria-hidden="true" style="flex:0 0 10px"></div>
+      </div>
+      <div style="margin-top:12px; display:flex; align-items:center; justify-content:space-between; gap:12px">
+        <div style="display:flex; align-items:center; gap:6px">
+          <span style="display:block; height:6px; border-radius:3px; transition:width 0.3s, background-color 0.3s; width:{{ sl.litShortcut.w0 }}; background:{{ sl.litShortcut.c0 }}"></span>
+          <span style="display:block; height:6px; border-radius:3px; transition:width 0.3s, background-color 0.3s; width:{{ sl.litShortcut.w1 }}; background:{{ sl.litShortcut.c1 }}"></span>
+          <span style="margin-left:6px; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; letter-spacing:0.04em; color:#8e8e96">Glisser →</span>
+        </div>
+        <div style="display:flex; gap:8px">
+          <button type="button" aria-label="Image précédente" data-target="litShortcut" data-dir="-1" onClick="{{ slideBtn }}" style="width:36px; height:36px; border-radius:50%; border:0; padding:0; background:#1c1c1f; color:#f4f4f5; font-size:18px; line-height:1; cursor:pointer; transition:opacity 0.2s, transform 0.12s ease-out; opacity:{{ sl.litShortcut.prev }}" style-active="transform:scale(0.96)">‹</button>
+          <button type="button" aria-label="Image suivante" data-target="litShortcut" data-dir="1" onClick="{{ slideBtn }}" style="width:36px; height:36px; border-radius:50%; border:0; padding:0; background:#1c1c1f; color:#f4f4f5; font-size:18px; line-height:1; cursor:pointer; transition:opacity 0.2s, transform 0.12s ease-out; opacity:{{ sl.litShortcut.next }}" style-active="transform:scale(0.96)">›</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="11 Lit Connecté — Cellules de force &amp; Installation" style="background:#ffffff; color:#0b0b0c; padding:48px 20px">
+    <div data-reveal="1">
+      <p style="margin:0; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:#6b6b70">Lit Connecté</p>
+      <h2 style="margin:8px 0 0; font-size:30px; font-weight:700; letter-spacing:-0.03em; line-height:1.08">Cellules de force &amp; Installation</h2>
+    </div>
+    <div data-reveal="1" style="margin-top:22px; padding-top:18px; border-top:1px solid rgba(0,0,0,0.1); display:flex; flex-direction:column; gap:8px">
+      <h3 style="margin:0; font-size:19px; font-weight:650; letter-spacing:-0.015em; line-height:1.2">Le choix du capteur&nbsp;: une décision clé</h3>
+      <p style="margin:0; font-size:16px; line-height:1.58; color:#424247">Le choix du capteur était l'étape la plus critique du projet : un faux négatif et je rate mon réveil, un faux positif et la musique ne tourne pour rien. Le FSR (pastille de pression sous le matelas) était l'option la plus simple, mais sa résistance dérive progressivement et les mouvements pendant le sommeil génèrent trop de bruit. La cellule de force s'est imposée : posée sous chaque pied, elle mesure un poids réel en kilogrammes, indépendamment de l'environnement. C'est invasif à l'installation, mais c'est la seule solution qui ne se trompe jamais.</p>
+    </div>
+    <div data-reveal="1" style="margin-top:28px; padding-top:18px; border-top:1px solid rgba(0,0,0,0.1)">
+      <h3 style="margin:0; font-size:19px; font-weight:650; letter-spacing:-0.015em; line-height:1.2">Cellules de force &amp; supports imprimés 3D</h3>
+    </div>
+    <div data-reveal="1" style="margin-top:14px">
+      <div data-slider="litCells" onScroll="{{ onSlide }}" style="display:flex; gap:10px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; margin:0 -20px; padding:0 20px; scroll-padding:0 20px; overscroll-behavior-x:contain">
+        <figure style="margin:0; flex:0 0 calc(100% - 28px); scroll-snap-align:start">
+          <div style="position:relative; aspect-ratio:1/1; border-radius:16px; overflow:hidden; background:#f0f0f2">
+            <img src="assets/image19.jpg" alt="4 cellules de force 35 kg dans leur support imprimé 3D" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:contain">
+            <span style="position:absolute; top:10px; right:10px; padding:5px 9px; border-radius:999px; background:rgba(0,0,0,0.55); color:#ffffff; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; line-height:1">1 / 2</span>
+          </div>
+          <figcaption style="margin-top:7px; font-size:12px; line-height:1.4; color:#6b6b70">4 cellules de force 35 kg dans leur support imprimé 3D</figcaption>
+        </figure>
+        <figure style="margin:0; flex:0 0 calc(100% - 28px); scroll-snap-align:start">
+          <div style="position:relative; aspect-ratio:1/1; border-radius:16px; overflow:hidden; background:#f0f0f2">
+            <img src="assets/image20.jpg" alt="Support ouvert – logement capteur + vis de fixation" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:contain">
+            <span style="position:absolute; top:10px; right:10px; padding:5px 9px; border-radius:999px; background:rgba(0,0,0,0.55); color:#ffffff; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; line-height:1">2 / 2</span>
+          </div>
+          <figcaption style="margin-top:7px; font-size:12px; line-height:1.4; color:#6b6b70">Support ouvert – logement capteur + vis de fixation</figcaption>
+        </figure>
+        <div aria-hidden="true" style="flex:0 0 10px"></div>
+      </div>
+      <div style="margin-top:12px; display:flex; align-items:center; justify-content:space-between; gap:12px">
+        <div style="display:flex; align-items:center; gap:6px">
+          <span style="display:block; height:6px; border-radius:3px; transition:width 0.3s, background-color 0.3s; width:{{ sl.litCells.w0 }}; background:{{ sl.litCells.c0 }}"></span>
+          <span style="display:block; height:6px; border-radius:3px; transition:width 0.3s, background-color 0.3s; width:{{ sl.litCells.w1 }}; background:{{ sl.litCells.c1 }}"></span>
+          <span style="margin-left:6px; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; letter-spacing:0.04em; color:#6b6b70">Glisser →</span>
+        </div>
+        <div style="display:flex; gap:8px">
+          <button type="button" aria-label="Image précédente" data-target="litCells" data-dir="-1" onClick="{{ slideBtn }}" style="width:36px; height:36px; border-radius:50%; border:0; padding:0; background:#f0f0f2; color:#0b0b0c; font-size:18px; line-height:1; cursor:pointer; transition:opacity 0.2s, transform 0.12s ease-out; opacity:{{ sl.litCells.prev }}" style-active="transform:scale(0.96)">‹</button>
+          <button type="button" aria-label="Image suivante" data-target="litCells" data-dir="1" onClick="{{ slideBtn }}" style="width:36px; height:36px; border-radius:50%; border:0; padding:0; background:#f0f0f2; color:#0b0b0c; font-size:18px; line-height:1; cursor:pointer; transition:opacity 0.2s, transform 0.12s ease-out; opacity:{{ sl.litCells.next }}" style-active="transform:scale(0.96)">›</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="12 Lit Connecté — Résultats &amp; Bilan" style="background:#000000; color:#f4f4f5; padding:48px 20px">
+    <div data-reveal="1">
+      <p style="margin:0; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:#8e8e96">Lit Connecté</p>
+      <h2 style="margin:8px 0 0; font-size:30px; font-weight:700; letter-spacing:-0.03em; line-height:1.08">Résultats &amp; Bilan</h2>
+    </div>
+    <div data-reveal="1" style="margin-top:18px; padding:2px 16px; border-radius:18px; background:#161618">
+      <div style="display:flex; gap:12px; align-items:flex-start; padding:14px 0"><span style="width:20px; height:20px; margin-top:1px; border-radius:50%; background:#f4f4f5; display:flex; align-items:center; justify-content:center; flex:none"><span style="width:5px; height:9px; border-right:1.8px solid #000000; border-bottom:1.8px solid #000000; transform:translateY(-1px) rotate(45deg)"></span></span><span style="font-size:15.5px; font-weight:500; line-height:1.42">Système fonctionnel et utilisé quotidiennement</span></div>
+      <div style="display:flex; gap:12px; align-items:flex-start; padding:14px 0; border-top:1px solid rgba(255,255,255,0.1)"><span style="width:20px; height:20px; margin-top:1px; border-radius:50%; background:#f4f4f5; display:flex; align-items:center; justify-content:center; flex:none"><span style="width:5px; height:9px; border-right:1.8px solid #000000; border-bottom:1.8px solid #000000; transform:translateY(-1px) rotate(45deg)"></span></span><span style="font-size:15.5px; font-weight:500; line-height:1.42">4 cellules de force calibrées sur mon poids : le système ne s’est jamais trompé</span></div>
+      <div style="display:flex; gap:12px; align-items:flex-start; padding:14px 0; border-top:1px solid rgba(255,255,255,0.1)"><span style="width:20px; height:20px; margin-top:1px; border-radius:50%; background:#f4f4f5; display:flex; align-items:center; justify-content:center; flex:none"><span style="width:5px; height:9px; border-right:1.8px solid #000000; border-bottom:1.8px solid #000000; transform:translateY(-1px) rotate(45deg)"></span></span><span style="font-size:15.5px; font-weight:500; line-height:1.42">La deuxième alarme ne sonne que si je suis encore dans le lit</span></div>
+      <div style="display:flex; gap:12px; align-items:flex-start; padding:14px 0; border-top:1px solid rgba(255,255,255,0.1)"><span style="width:20px; height:20px; margin-top:1px; border-radius:50%; background:#f4f4f5; display:flex; align-items:center; justify-content:center; flex:none"><span style="width:5px; height:9px; border-right:1.8px solid #000000; border-bottom:1.8px solid #000000; transform:translateY(-1px) rotate(45deg)"></span></span><span style="font-size:15.5px; font-weight:500; line-height:1.42">Rideau connecté sans module domotique : relais soudé directement sur la télécommande existante</span></div>
+      <div style="display:flex; gap:12px; align-items:flex-start; padding:14px 0; border-top:1px solid rgba(255,255,255,0.1)"><span style="width:20px; height:20px; margin-top:1px; border-radius:50%; background:#f4f4f5; display:flex; align-items:center; justify-content:center; flex:none"><span style="width:5px; height:9px; border-right:1.8px solid #000000; border-bottom:1.8px solid #000000; transform:translateY(-1px) rotate(45deg)"></span></span><span style="font-size:15.5px; font-weight:500; line-height:1.42">Intégration transparente dans iOS : une seule configuration du Raccourci, zéro geste supplémentaire chaque soir</span></div>
+      <div style="display:flex; gap:12px; align-items:flex-start; padding:14px 0; border-top:1px solid rgba(255,255,255,0.1)"><span style="width:20px; height:20px; margin-top:1px; border-radius:50%; background:#f4f4f5; display:flex; align-items:center; justify-content:center; flex:none"><span style="width:5px; height:9px; border-right:1.8px solid #000000; border-bottom:1.8px solid #000000; transform:translateY(-1px) rotate(45deg)"></span></span><span style="font-size:15.5px; font-weight:500; line-height:1.42">Coût total &lt; 35 € pour un résultat que les produits commerciaux ne proposent pas</span></div>
+      <div style="display:flex; gap:12px; align-items:flex-start; padding:14px 0; border-top:1px solid rgba(255,255,255,0.1)"><span style="width:20px; height:20px; margin-top:1px; border-radius:50%; background:#f4f4f5; display:flex; align-items:center; justify-content:center; flex:none"><span style="width:5px; height:9px; border-right:1.8px solid #000000; border-bottom:1.8px solid #000000; transform:translateY(-1px) rotate(45deg)"></span></span><span style="font-size:15.5px; font-weight:500; line-height:1.42">Compétences mobilisées : firmware C++ sur ESP8266, serveur web embarqué, rétro-ingénierie électronique, CAO &amp; impression 3D, calibration de capteurs</span></div>
+    </div>
+  </section>
+</div>
+
+<div id="cyberline">
+  <section data-screen-label="13 Cyberline" style="background:#ffffff; color:#0b0b0c; padding:56px 20px 48px">
+    <div data-reveal="1">
+      <p style="margin:0; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:12px; font-weight:500; letter-spacing:0.06em; color:#6b6b70">03</p>
+      <h2 style="margin:8px 0 0; font-size:44px; font-weight:700; letter-spacing:-0.045em; line-height:0.98">Cyberline</h2>
+      <p style="margin:12px 0 0; font-size:17px; font-weight:500; letter-spacing:-0.01em; line-height:1.35; color:#6b6b70">Robot suiveur de ligne autonome</p>
+      <div style="display:flex; flex-wrap:wrap; gap:6px; margin-top:16px">
+        <span style="font-size:12px; font-weight:500; line-height:1; padding:7px 11px; border-radius:999px; background:#f0f0f2; color:#3a3a3e">Arduino</span>
+        <span style="font-size:12px; font-weight:500; line-height:1; padding:7px 11px; border-radius:999px; background:#f0f0f2; color:#3a3a3e">Fusion 360</span>
+        <span style="font-size:12px; font-weight:500; line-height:1; padding:7px 11px; border-radius:999px; background:#f0f0f2; color:#3a3a3e">Impression 3D</span>
+        <span style="font-size:12px; font-weight:500; line-height:1; padding:7px 11px; border-radius:999px; background:#f0f0f2; color:#3a3a3e">Robotique</span>
+        <span style="font-size:12px; font-weight:500; line-height:1; padding:7px 11px; border-radius:999px; background:#f0f0f2; color:#3a3a3e">Android App</span>
+      </div>
+    </div>
+    <div data-reveal="1" style="margin-top:28px; padding-top:18px; border-top:1px solid rgba(0,0,0,0.1); display:flex; flex-direction:column; gap:8px">
+      <p style="margin:0; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:#6b6b70">Présentation du projet</p>
+      <h3 style="margin:0; font-size:19px; font-weight:650; letter-spacing:-0.015em; line-height:1.2">Contexte &amp; Objectif</h3>
+      <p style="margin:0; font-size:17.5px; font-weight:500; letter-spacing:-0.01em; line-height:1.42">Le Cyberline est un robot mobile autonome conçu et fabriqué entièrement de A à Z dans le cadre d'un challenge scolaire. Inspiré du design angulaire du Cybertruck de Tesla, il suit de façon autonome une ligne noire sur un parcours balisé par 6 marqueurs, détecte les obstacles et s'arrête avant toute collision en émettant un signal sonore.</p>
+      <p style="margin:6px 0 0; font-size:16px; line-height:1.58; color:#424247">Une application Android développée sur MIT App Inventor permet à un utilisateur de sélectionner à distance une porte cible (1 à 6) via Bluetooth : le robot reçoit la commande, commence son suivi de ligne jusqu'au marqueur correspondant, s'immobilise 5 secondes en activant le buzzer, puis reprend automatiquement sa route.</p>
+    </div>
+  </section>
+
+  <section data-screen-label="14 Cyberline — Architecture" style="background:#000000; color:#f4f4f5; padding:48px 20px">
+    <div data-reveal="1">
+      <p style="margin:0; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:#8e8e96">Cyberline</p>
+      <h2 style="margin:8px 0 0; font-size:30px; font-weight:700; letter-spacing:-0.03em; line-height:1.08">Architecture du système</h2>
+      <p style="margin:14px 0 0; font-size:16px; line-height:1.58; color:#a8a8ae">Le cerveau du robot est un Arduino Uno piloté par un firmware C++ maison. Deux moteurs DC sont commandés par un pont en H L298N. Le suivi de ligne repose sur un capteur Maker Line 5 canaux infrarouge. La détection d'obstacle utilise un capteur ultrasonique HC-SR04. Le tout est alimenté par une batterie NiMH 7.2V et contrôlable via Bluetooth HC-05 depuis une application Android développée sur MIT app inventor.</p>
+    </div>
+    <div data-reveal="1" style="margin-top:28px; padding-top:18px; border-top:1px solid rgba(255,255,255,0.16)">
+      <h3 style="margin:0; font-size:19px; font-weight:650; letter-spacing:-0.015em; line-height:1.2">Vues extérieures - Robot final</h3>
+    </div>
+    <div data-reveal="1" style="margin-top:14px">
+      <div data-slider="cyberViews" onScroll="{{ onSlide }}" style="display:flex; gap:10px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; margin:0 -20px; padding:0 20px; scroll-padding:0 20px; overscroll-behavior-x:contain">
+        <figure style="margin:0; flex:0 0 calc(100% - 28px); scroll-snap-align:start">
+          <div style="position:relative; aspect-ratio:3/4; border-radius:16px; overflow:hidden; background:#141416">
+            <img src="assets/image21.jpg" alt="Vue avant" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:contain">
+            <span style="position:absolute; top:10px; right:10px; padding:5px 9px; border-radius:999px; background:rgba(0,0,0,0.55); color:#ffffff; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; line-height:1">1 / 3</span>
+          </div>
+          <figcaption style="margin-top:7px; font-size:12px; line-height:1.4; color:#8e8e96">Vue avant</figcaption>
+        </figure>
+        <figure style="margin:0; flex:0 0 calc(100% - 28px); scroll-snap-align:start">
+          <div style="position:relative; aspect-ratio:3/4; border-radius:16px; overflow:hidden; background:#141416">
+            <img src="assets/image22.jpg" alt="Vue avant/dessus" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:contain">
+            <span style="position:absolute; top:10px; right:10px; padding:5px 9px; border-radius:999px; background:rgba(0,0,0,0.55); color:#ffffff; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; line-height:1">2 / 3</span>
+          </div>
+          <figcaption style="margin-top:7px; font-size:12px; line-height:1.4; color:#8e8e96">Vue avant/dessus</figcaption>
+        </figure>
+        <figure style="margin:0; flex:0 0 calc(100% - 28px); scroll-snap-align:start">
+          <div style="position:relative; aspect-ratio:3/4; border-radius:16px; overflow:hidden; background:#141416">
+            <img src="assets/image23-rot.jpg" alt="Vue côté gauche" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:contain">
+            <span style="position:absolute; top:10px; right:10px; padding:5px 9px; border-radius:999px; background:rgba(0,0,0,0.55); color:#ffffff; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; line-height:1">3 / 3</span>
+          </div>
+          <figcaption style="margin-top:7px; font-size:12px; line-height:1.4; color:#8e8e96">Vue côté gauche</figcaption>
+        </figure>
+        <div aria-hidden="true" style="flex:0 0 10px"></div>
+      </div>
+      <div style="margin-top:12px; display:flex; align-items:center; justify-content:space-between; gap:12px">
+        <div style="display:flex; align-items:center; gap:6px">
+          <span style="display:block; height:6px; border-radius:3px; transition:width 0.3s, background-color 0.3s; width:{{ sl.cyberViews.w0 }}; background:{{ sl.cyberViews.c0 }}"></span>
+          <span style="display:block; height:6px; border-radius:3px; transition:width 0.3s, background-color 0.3s; width:{{ sl.cyberViews.w1 }}; background:{{ sl.cyberViews.c1 }}"></span>
+          <span style="display:block; height:6px; border-radius:3px; transition:width 0.3s, background-color 0.3s; width:{{ sl.cyberViews.w2 }}; background:{{ sl.cyberViews.c2 }}"></span>
+          <span style="margin-left:6px; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; letter-spacing:0.04em; color:#8e8e96">Glisser →</span>
+        </div>
+        <div style="display:flex; gap:8px">
+          <button type="button" aria-label="Image précédente" data-target="cyberViews" data-dir="-1" onClick="{{ slideBtn }}" style="width:36px; height:36px; border-radius:50%; border:0; padding:0; background:#1c1c1f; color:#f4f4f5; font-size:18px; line-height:1; cursor:pointer; transition:opacity 0.2s, transform 0.12s ease-out; opacity:{{ sl.cyberViews.prev }}" style-active="transform:scale(0.96)">‹</button>
+          <button type="button" aria-label="Image suivante" data-target="cyberViews" data-dir="1" onClick="{{ slideBtn }}" style="width:36px; height:36px; border-radius:50%; border:0; padding:0; background:#1c1c1f; color:#f4f4f5; font-size:18px; line-height:1; cursor:pointer; transition:opacity 0.2s, transform 0.12s ease-out; opacity:{{ sl.cyberViews.next }}" style-active="transform:scale(0.96)">›</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="15 Cyberline — Conception CAO" style="background:#ffffff; color:#0b0b0c; padding:48px 20px">
+    <div data-reveal="1">
+      <p style="margin:0; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:#6b6b70">Cyberline</p>
+      <h2 style="margin:8px 0 0; font-size:30px; font-weight:700; letter-spacing:-0.03em; line-height:1.08">Conception CAO sur Fusion 360</h2>
+    </div>
+    <figure data-reveal="1" style="margin:22px 0 0">
+      <div style="aspect-ratio:4/5; border-radius:18px; overflow:hidden; background:radial-gradient(120% 90% at 50% 35%, #ffffff 0%, #f4f4f6 55%, #e9e9ec 100%)">
+        <x-import component-from-global-scope="cyberline-3d" from="./cyberline-3d.js" src="assets/cyberline" fallback="assets/image24.png" compact="1" style="display:block; width:100%; height:100%" hint-size="100%,100%"></x-import>
+      </div>
+      <figcaption style="margin-top:7px; font-size:12px; line-height:1.4; color:#6b6b70">Rendu 3D complet</figcaption>
+    </figure>
+  </section>
+
+  <section data-screen-label="16 Cyberline — Interface applicative &amp; prototype" style="background:#000000; color:#f4f4f5; padding:48px 20px">
+    <div data-reveal="1">
+      <p style="margin:0; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:#8e8e96">Cyberline</p>
+      <h2 style="margin:8px 0 0; font-size:30px; font-weight:700; letter-spacing:-0.03em; line-height:1.08">Interface applicative</h2>
+    </div>
+    <div data-reveal="1" style="margin-top:18px">
+      <div data-slider="cyberApp" onScroll="{{ onSlide }}" style="display:flex; gap:10px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; margin:0 -20px; padding:0 20px; scroll-padding:0 20px; overscroll-behavior-x:contain">
+        <figure style="margin:0; flex:0 0 calc(100% - 28px); scroll-snap-align:start">
+          <div style="position:relative; aspect-ratio:3/4; border-radius:16px; overflow:hidden; background:#141416; box-sizing:border-box">
+            <img src="assets/image27.jpg" alt="Ecran d’accueil - Démarrage et connexion Bluetooth" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:contain">
+            <span style="position:absolute; top:10px; right:10px; padding:5px 9px; border-radius:999px; background:rgba(0,0,0,0.55); color:#ffffff; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; line-height:1">1 / 2</span>
+          </div>
+          <figcaption style="margin-top:7px; font-size:12px; line-height:1.4; color:#8e8e96">Ecran d’accueil - Démarrage et connexion Bluetooth</figcaption>
+        </figure>
+        <figure style="margin:0; flex:0 0 calc(100% - 28px); scroll-snap-align:start">
+          <div style="position:relative; aspect-ratio:3/4; border-radius:16px; overflow:hidden; background:#141416; box-sizing:border-box">
+            <img src="assets/image28.jpg" alt="Ecran de sélection - Choix de la porte (1 a 6)" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:contain">
+            <span style="position:absolute; top:10px; right:10px; padding:5px 9px; border-radius:999px; background:rgba(0,0,0,0.55); color:#ffffff; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; line-height:1">2 / 2</span>
+          </div>
+          <figcaption style="margin-top:7px; font-size:12px; line-height:1.4; color:#8e8e96">Ecran de sélection - Choix de la porte (1 a 6)</figcaption>
+        </figure>
+        <div aria-hidden="true" style="flex:0 0 10px"></div>
+      </div>
+      <div style="margin-top:12px; display:flex; align-items:center; justify-content:space-between; gap:12px">
+        <div style="display:flex; align-items:center; gap:6px">
+          <span style="display:block; height:6px; border-radius:3px; transition:width 0.3s, background-color 0.3s; width:{{ sl.cyberApp.w0 }}; background:{{ sl.cyberApp.c0 }}"></span>
+          <span style="display:block; height:6px; border-radius:3px; transition:width 0.3s, background-color 0.3s; width:{{ sl.cyberApp.w1 }}; background:{{ sl.cyberApp.c1 }}"></span>
+          <span style="margin-left:6px; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; letter-spacing:0.04em; color:#8e8e96">Glisser →</span>
+        </div>
+        <div style="display:flex; gap:8px">
+          <button type="button" aria-label="Image précédente" data-target="cyberApp" data-dir="-1" onClick="{{ slideBtn }}" style="width:36px; height:36px; border-radius:50%; border:0; padding:0; background:#1c1c1f; color:#f4f4f5; font-size:18px; line-height:1; cursor:pointer; transition:opacity 0.2s, transform 0.12s ease-out; opacity:{{ sl.cyberApp.prev }}" style-active="transform:scale(0.96)">‹</button>
+          <button type="button" aria-label="Image suivante" data-target="cyberApp" data-dir="1" onClick="{{ slideBtn }}" style="width:36px; height:36px; border-radius:50%; border:0; padding:0; background:#1c1c1f; color:#f4f4f5; font-size:18px; line-height:1; cursor:pointer; transition:opacity 0.2s, transform 0.12s ease-out; opacity:{{ sl.cyberApp.next }}" style-active="transform:scale(0.96)">›</button>
+        </div>
+      </div>
+    </div>
+    <div data-reveal="1" style="margin-top:40px">
+      <p style="margin:0; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:#8e8e96">Cyberline</p>
+      <h2 style="margin:8px 0 0; font-size:30px; font-weight:700; letter-spacing:-0.03em; line-height:1.08">Vue d'ensemble du prototype</h2>
+    </div>
+    <div data-reveal="1" style="margin-top:18px">
+      <div data-slider="cyberProto" onScroll="{{ onSlide }}" style="display:flex; gap:10px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; margin:0 -20px; padding:0 20px; scroll-padding:0 20px; overscroll-behavior-x:contain">
+        <figure style="margin:0; flex:0 0 calc(100% - 28px); scroll-snap-align:start">
+          <div style="position:relative; aspect-ratio:3/4; border-radius:16px; overflow:hidden; background:#141416; box-sizing:border-box">
+            <img src="assets/image29.jpg" alt="Vue dessus" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:contain">
+            <span style="position:absolute; top:10px; right:10px; padding:5px 9px; border-radius:999px; background:rgba(0,0,0,0.55); color:#ffffff; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; line-height:1">1 / 2</span>
+          </div>
+          <figcaption style="margin-top:7px; font-size:12px; line-height:1.4; color:#8e8e96">Vue dessus</figcaption>
+        </figure>
+        <figure style="margin:0; flex:0 0 calc(100% - 28px); scroll-snap-align:start">
+          <div style="position:relative; aspect-ratio:3/4; border-radius:16px; overflow:hidden; background:#141416; box-sizing:border-box">
+            <img src="assets/image30.jpg" alt="Vue dessous" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:contain">
+            <span style="position:absolute; top:10px; right:10px; padding:5px 9px; border-radius:999px; background:rgba(0,0,0,0.55); color:#ffffff; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; line-height:1">2 / 2</span>
+          </div>
+          <figcaption style="margin-top:7px; font-size:12px; line-height:1.4; color:#8e8e96">Vue dessous</figcaption>
+        </figure>
+        <div aria-hidden="true" style="flex:0 0 10px"></div>
+      </div>
+      <div style="margin-top:12px; display:flex; align-items:center; justify-content:space-between; gap:12px">
+        <div style="display:flex; align-items:center; gap:6px">
+          <span style="display:block; height:6px; border-radius:3px; transition:width 0.3s, background-color 0.3s; width:{{ sl.cyberProto.w0 }}; background:{{ sl.cyberProto.c0 }}"></span>
+          <span style="display:block; height:6px; border-radius:3px; transition:width 0.3s, background-color 0.3s; width:{{ sl.cyberProto.w1 }}; background:{{ sl.cyberProto.c1 }}"></span>
+          <span style="margin-left:6px; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; letter-spacing:0.04em; color:#8e8e96">Glisser →</span>
+        </div>
+        <div style="display:flex; gap:8px">
+          <button type="button" aria-label="Image précédente" data-target="cyberProto" data-dir="-1" onClick="{{ slideBtn }}" style="width:36px; height:36px; border-radius:50%; border:0; padding:0; background:#1c1c1f; color:#f4f4f5; font-size:18px; line-height:1; cursor:pointer; transition:opacity 0.2s, transform 0.12s ease-out; opacity:{{ sl.cyberProto.prev }}" style-active="transform:scale(0.96)">‹</button>
+          <button type="button" aria-label="Image suivante" data-target="cyberProto" data-dir="1" onClick="{{ slideBtn }}" style="width:36px; height:36px; border-radius:50%; border:0; padding:0; background:#1c1c1f; color:#f4f4f5; font-size:18px; line-height:1; cursor:pointer; transition:opacity 0.2s, transform 0.12s ease-out; opacity:{{ sl.cyberProto.next }}" style-active="transform:scale(0.96)">›</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="17 Cyberline — Bilan" style="background:#ffffff; color:#0b0b0c; padding:48px 20px">
+    <div data-reveal="1">
+      <p style="margin:0; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:#6b6b70">Cyberline</p>
+      <h2 style="margin:8px 0 0; font-size:30px; font-weight:700; letter-spacing:-0.03em; line-height:1.08">Bilan</h2>
+    </div>
+    <div data-reveal="1" style="margin-top:18px; padding:18px 16px 4px; border-radius:18px; background:#f4f4f6">
+      <h3 style="margin:0; font-size:17px; font-weight:650; letter-spacing:-0.015em; line-height:1.2">Compétences mobilisées</h3>
+      <div style="margin-top:10px">
+        <div style="display:flex; gap:12px; align-items:flex-start; padding:12px 0; border-top:1px solid rgba(0,0,0,0.08)"><span style="width:20px; height:20px; margin-top:1px; border-radius:50%; background:#0b0b0c; display:flex; align-items:center; justify-content:center; flex:none"><span style="width:5px; height:9px; border-right:1.8px solid #ffffff; border-bottom:1.8px solid #ffffff; transform:translateY(-1px) rotate(45deg)"></span></span><span style="font-size:15.5px; line-height:1.42">CAO avancée : 12 pièces complexes sur Fusion 360</span></div>
+        <div style="display:flex; gap:12px; align-items:flex-start; padding:12px 0; border-top:1px solid rgba(0,0,0,0.08)"><span style="width:20px; height:20px; margin-top:1px; border-radius:50%; background:#0b0b0c; display:flex; align-items:center; justify-content:center; flex:none"><span style="width:5px; height:9px; border-right:1.8px solid #ffffff; border-bottom:1.8px solid #ffffff; transform:translateY(-1px) rotate(45deg)"></span></span><span style="font-size:15.5px; line-height:1.42">Électronique : câblage, pont en H, capteurs, communication Bluetooth</span></div>
+        <div style="display:flex; gap:12px; align-items:flex-start; padding:12px 0; border-top:1px solid rgba(0,0,0,0.08)"><span style="width:20px; height:20px; margin-top:1px; border-radius:50%; background:#0b0b0c; display:flex; align-items:center; justify-content:center; flex:none"><span style="width:5px; height:9px; border-right:1.8px solid #ffffff; border-bottom:1.8px solid #ffffff; transform:translateY(-1px) rotate(45deg)"></span></span><span style="font-size:15.5px; line-height:1.42">Programmation C++ embarquée sur Arduino</span></div>
+        <div style="display:flex; gap:12px; align-items:flex-start; padding:12px 0; border-top:1px solid rgba(0,0,0,0.08)"><span style="width:20px; height:20px; margin-top:1px; border-radius:50%; background:#0b0b0c; display:flex; align-items:center; justify-content:center; flex:none"><span style="width:5px; height:9px; border-right:1.8px solid #ffffff; border-bottom:1.8px solid #ffffff; transform:translateY(-1px) rotate(45deg)"></span></span><span style="font-size:15.5px; line-height:1.42">Développement application Android (MIT App Inventor)</span></div>
+      </div>
+    </div>
+    <div data-reveal="1" style="margin-top:10px; padding:18px 16px 4px; border-radius:18px; background:#f4f4f6">
+      <h3 style="margin:0; font-size:17px; font-weight:650; letter-spacing:-0.015em; line-height:1.2">Points forts</h3>
+      <div style="margin-top:10px">
+        <div style="display:flex; gap:12px; align-items:flex-start; padding:12px 0; border-top:1px solid rgba(0,0,0,0.08)"><span style="width:20px; height:20px; margin-top:1px; border-radius:50%; background:#0b0b0c; display:flex; align-items:center; justify-content:center; flex:none"><span style="width:5px; height:9px; border-right:1.8px solid #ffffff; border-bottom:1.8px solid #ffffff; transform:translateY(-1px) rotate(45deg)"></span></span><span style="font-size:15.5px; line-height:1.42">Design original inspiré du Tesla Cybertruck : différenciateur fort</span></div>
+        <div style="display:flex; gap:12px; align-items:flex-start; padding:12px 0; border-top:1px solid rgba(0,0,0,0.08)"><span style="width:20px; height:20px; margin-top:1px; border-radius:50%; background:#0b0b0c; display:flex; align-items:center; justify-content:center; flex:none"><span style="width:5px; height:9px; border-right:1.8px solid #ffffff; border-bottom:1.8px solid #ffffff; transform:translateY(-1px) rotate(45deg)"></span></span><span style="font-size:15.5px; line-height:1.42">Conception 100% maison : aucune pièce standard, tout modélisé</span></div>
+        <div style="display:flex; gap:12px; align-items:flex-start; padding:12px 0; border-top:1px solid rgba(0,0,0,0.08)"><span style="width:20px; height:20px; margin-top:1px; border-radius:50%; background:#0b0b0c; display:flex; align-items:center; justify-content:center; flex:none"><span style="width:5px; height:9px; border-right:1.8px solid #ffffff; border-bottom:1.8px solid #ffffff; transform:translateY(-1px) rotate(45deg)"></span></span><span style="font-size:15.5px; line-height:1.42">Robot fonctionnel en conditions réelles de challenge</span></div>
+        <div style="display:flex; gap:12px; align-items:flex-start; padding:12px 0; border-top:1px solid rgba(0,0,0,0.08)"><span style="width:20px; height:20px; margin-top:1px; border-radius:50%; background:#0b0b0c; display:flex; align-items:center; justify-content:center; flex:none"><span style="width:5px; height:9px; border-right:1.8px solid #ffffff; border-bottom:1.8px solid #ffffff; transform:translateY(-1px) rotate(45deg)"></span></span><span style="font-size:15.5px; line-height:1.42">Application mobile dédiée : contrôle Bluetooth</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div id="frigo-connecte">
+  <section data-screen-label="18 Frigo Connecté" style="background:#000000; color:#f4f4f5; padding:56px 20px 48px">
+    <div data-reveal="1">
+      <p style="margin:0; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:12px; font-weight:500; letter-spacing:0.06em; color:#8e8e96">04</p>
+      <h2 style="margin:8px 0 0; font-size:44px; font-weight:700; letter-spacing:-0.045em; line-height:0.98">Frigo Connecté</h2>
+      <p style="margin:12px 0 0; font-size:17px; font-weight:500; letter-spacing:-0.01em; line-height:1.35; color:#a1a1a8">Surveillance des chambres froides en temps réel</p>
+      <div style="display:flex; flex-wrap:wrap; gap:6px; margin-top:16px">
+        <span style="font-size:12px; font-weight:500; line-height:1; padding:7px 11px; border-radius:999px; background:#1c1c1f; color:#d4d4da">IoT</span>
+        <span style="font-size:12px; font-weight:500; line-height:1; padding:7px 11px; border-radius:999px; background:#1c1c1f; color:#d4d4da">ESP8266</span>
+        <span style="font-size:12px; font-weight:500; line-height:1; padding:7px 11px; border-radius:999px; background:#1c1c1f; color:#d4d4da">DS18B20</span>
+        <span style="font-size:12px; font-weight:500; line-height:1; padding:7px 11px; border-radius:999px; background:#1c1c1f; color:#d4d4da">Blynk</span>
+        <span style="font-size:12px; font-weight:500; line-height:1; padding:7px 11px; border-radius:999px; background:#1c1c1f; color:#d4d4da">C++</span>
+      </div>
+    </div>
+    <div data-reveal="1" style="margin-top:28px; padding-top:18px; border-top:1px solid rgba(255,255,255,0.16); display:flex; flex-direction:column; gap:8px">
+      <p style="margin:0; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:#8e8e96">Présentation du projet</p>
+      <h3 style="margin:0; font-size:19px; font-weight:650; letter-spacing:-0.015em; line-height:1.2">Contexte</h3>
+      <p style="margin:0; font-size:17.5px; font-weight:500; letter-spacing:-0.01em; line-height:1.42">Dans un environnement de restauration, la rupture de la chaîne du froid représente un risque sanitaire et économique majeur. Ce projet répond à un besoin réel : surveiller en continu la température de deux chambres froides (positive et négative) et alerter immédiatement en cas d'anomalie, 24h/24.</p>
+    </div>
+    <div data-reveal="1" style="margin-top:28px; padding-top:18px; border-top:1px solid rgba(255,255,255,0.16); display:flex; flex-direction:column; gap:8px">
+      <h3 style="margin:0; font-size:19px; font-weight:650; letter-spacing:-0.015em; line-height:1.2">Solution développée</h3>
+      <p style="margin:0; font-size:16px; line-height:1.58; color:#a8a8ae">Un microcontrôleur ESP8266 (NodeMCU) collecte les mesures de deux sondes DS18B20 toutes les 30 secondes. Les données sont transmises via Wi-Fi à l'application Blynk, accessible depuis n'importe quel smartphone. En cas de dépassement prolongé des seuils configurés, un buzzer local s'active pour alerter le personnel sur place, en complément des notifications push sur téléphone.</p>
+    </div>
+  </section>
+
+  <section data-screen-label="19 Frigo Connecté — Gestion des alertes" style="background:#ffffff; color:#0b0b0c; padding:48px 20px">
+    <div data-reveal="1">
+      <p style="margin:0; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:#6b6b70">Frigo Connecté</p>
+      <h2 style="margin:8px 0 0; font-size:30px; font-weight:700; letter-spacing:-0.03em; line-height:1.08">Gestion des alertes</h2>
+    </div>
+    <div data-reveal="1" style="margin-top:18px; display:flex; flex-direction:column; gap:8px">
+      <div style="padding:14px 16px; border-radius:16px; background:#f4f4f6">
+        <p style="margin:0; font-size:16px; font-weight:650; letter-spacing:-0.01em">Tout fonctionne bien</p>
+        <div style="margin-top:8px; display:grid; grid-template-columns:62px minmax(0,1fr); row-gap:6px; align-items:center; font-size:14.5px">
+          <span style="font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:#6b6b70">LED</span>
+          <span style="display:flex; align-items:center; gap:8px"><span style="width:9px; height:9px; border-radius:50%; background:#22b45e; flex:none"></span>Allumée</span>
+          <span style="font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:#6b6b70">Buzzer</span>
+          <span style="display:flex; align-items:center; gap:8px"><span style="width:9px; height:9px; border-radius:50%; box-shadow:inset 0 0 0 1.5px #a9a9b0; flex:none"></span>Éteint</span>
+        </div>
+      </div>
+      <div style="padding:14px 16px; border-radius:16px; background:#f4f4f6">
+        <p style="margin:0; font-size:16px; font-weight:650; letter-spacing:-0.01em">Perte de Wi-Fi</p>
+        <div style="margin-top:8px; display:grid; grid-template-columns:62px minmax(0,1fr); row-gap:6px; align-items:center; font-size:14.5px">
+          <span style="font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:#6b6b70">LED</span>
+          <span style="display:flex; align-items:center; gap:8px"><span style="width:9px; height:9px; border-radius:50%; box-shadow:inset 0 0 0 1.5px #a9a9b0; flex:none"></span>Éteinte</span>
+          <span style="font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:#6b6b70">Buzzer</span>
+          <span style="display:flex; align-items:center; gap:8px">{{ beep }}Bip toutes les secondes</span>
+        </div>
+      </div>
+      <div style="padding:14px 16px; border-radius:16px; background:#f4f4f6">
+        <p style="margin:0; font-size:16px; font-weight:650; letter-spacing:-0.01em">Capteur(s) déconnecté</p>
+        <div style="margin-top:8px; display:grid; grid-template-columns:62px minmax(0,1fr); row-gap:6px; align-items:center; font-size:14.5px">
+          <span style="font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:#6b6b70">LED</span>
+          <span style="display:flex; align-items:center; gap:8px"><span style="width:9px; height:9px; border-radius:50%; background:#22b45e; flex:none"></span>Allumée</span>
+          <span style="font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:#6b6b70">Buzzer</span>
+          <span style="display:flex; align-items:center; gap:8px">{{ beep }}Bip toutes les secondes</span>
+        </div>
+      </div>
+      <div style="padding:14px 16px; border-radius:16px; background:#f4f4f6">
+        <p style="margin:0; font-size:16px; font-weight:650; letter-spacing:-0.01em">Température dépassée</p>
+        <div style="margin-top:8px; display:grid; grid-template-columns:62px minmax(0,1fr); row-gap:6px; align-items:center; font-size:14.5px">
+          <span style="font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:#6b6b70">LED</span>
+          <span style="display:flex; align-items:center; gap:8px"><span style="width:9px; height:9px; border-radius:50%; background:#22b45e; flex:none"></span>Allumée</span>
+          <span style="font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:#6b6b70">Buzzer</span>
+          <span style="display:flex; align-items:center; gap:8px"><span style="width:9px; height:9px; border-radius:50%; background:#ef4136; box-shadow:0 0 0 3px rgba(239,65,54,0.16); flex:none"></span>Bip en continu (sans arrêt)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="20 Frigo Connecté — Circuit" style="background:#000000; color:#f4f4f5; padding:48px 20px">
+    <div data-reveal="1">
+      <p style="margin:0; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:#8e8e96">Frigo Connecté</p>
+      <h2 style="margin:8px 0 0; font-size:30px; font-weight:700; letter-spacing:-0.03em; line-height:1.08">Circuit électronique &amp; Connectique</h2>
+    </div>
+    <div data-reveal="1" style="margin-top:18px">
+      <div data-slider="frigoCircuit" onScroll="{{ onSlide }}" style="display:flex; gap:10px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; margin:0 -20px; padding:0 20px; scroll-padding:0 20px; overscroll-behavior-x:contain">
+        <figure style="margin:0; flex:0 0 calc(100% - 28px); scroll-snap-align:start">
+          <div style="position:relative; aspect-ratio:3/4; border-radius:16px; overflow:hidden; background:#141416; box-sizing:border-box">
+            <img src="assets/image33.jpg" alt="Circuit soudé sur PCB" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:contain">
+            <span style="position:absolute; top:10px; right:10px; padding:5px 9px; border-radius:999px; background:rgba(0,0,0,0.55); color:#ffffff; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; line-height:1">1 / 2</span>
+          </div>
+          <figcaption style="margin-top:7px; font-size:12px; line-height:1.4; color:#8e8e96">Circuit soudé sur PCB</figcaption>
+        </figure>
+        <figure style="margin:0; flex:0 0 calc(100% - 28px); scroll-snap-align:start">
+          <div style="position:relative; aspect-ratio:3/4; border-radius:16px; overflow:hidden; background:#141416; box-sizing:border-box">
+            <img src="assets/image34.jpg" alt="Boîtier ouvert : ESP8266 + PCB + alimentation 5V" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:contain">
+            <span style="position:absolute; top:10px; right:10px; padding:5px 9px; border-radius:999px; background:rgba(0,0,0,0.55); color:#ffffff; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; line-height:1">2 / 2</span>
+          </div>
+          <figcaption style="margin-top:7px; font-size:12px; line-height:1.4; color:#8e8e96">Boîtier ouvert : ESP8266 + PCB + alimentation 5V</figcaption>
+        </figure>
+        <div aria-hidden="true" style="flex:0 0 10px"></div>
+      </div>
+      <div style="margin-top:12px; display:flex; align-items:center; justify-content:space-between; gap:12px">
+        <div style="display:flex; align-items:center; gap:6px">
+          <span style="display:block; height:6px; border-radius:3px; transition:width 0.3s, background-color 0.3s; width:{{ sl.frigoCircuit.w0 }}; background:{{ sl.frigoCircuit.c0 }}"></span>
+          <span style="display:block; height:6px; border-radius:3px; transition:width 0.3s, background-color 0.3s; width:{{ sl.frigoCircuit.w1 }}; background:{{ sl.frigoCircuit.c1 }}"></span>
+          <span style="margin-left:6px; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; letter-spacing:0.04em; color:#8e8e96">Glisser →</span>
+        </div>
+        <div style="display:flex; gap:8px">
+          <button type="button" aria-label="Image précédente" data-target="frigoCircuit" data-dir="-1" onClick="{{ slideBtn }}" style="width:36px; height:36px; border-radius:50%; border:0; padding:0; background:#1c1c1f; color:#f4f4f5; font-size:18px; line-height:1; cursor:pointer; transition:opacity 0.2s, transform 0.12s ease-out; opacity:{{ sl.frigoCircuit.prev }}" style-active="transform:scale(0.96)">‹</button>
+          <button type="button" aria-label="Image suivante" data-target="frigoCircuit" data-dir="1" onClick="{{ slideBtn }}" style="width:36px; height:36px; border-radius:50%; border:0; padding:0; background:#1c1c1f; color:#f4f4f5; font-size:18px; line-height:1; cursor:pointer; transition:opacity 0.2s, transform 0.12s ease-out; opacity:{{ sl.frigoCircuit.next }}" style-active="transform:scale(0.96)">›</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="21 Frigo Connecté — Boîtier, sondes &amp; application" style="background:#ffffff; color:#0b0b0c; padding:48px 20px">
+    <div data-reveal="1">
+      <p style="margin:0; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:#6b6b70">Frigo Connecté</p>
+      <h2 style="margin:8px 0 0; font-size:30px; font-weight:700; letter-spacing:-0.03em; line-height:1.08">Boîtier &amp; Installation</h2>
+    </div>
+    <div data-reveal="1" style="margin-top:18px">
+      <div data-slider="frigoBox" onScroll="{{ onSlide }}" style="display:flex; gap:10px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; margin:0 -20px; padding:0 20px; scroll-padding:0 20px; overscroll-behavior-x:contain">
+        <figure style="margin:0; flex:0 0 calc(100% - 28px); scroll-snap-align:start">
+          <div style="position:relative; aspect-ratio:3/4; border-radius:16px; overflow:hidden; background:#f0f0f2; box-sizing:border-box">
+            <img src="assets/image35.jpg" alt="Boîtier IP55 monté en cuisine — vue extérieure" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:contain">
+            <span style="position:absolute; top:10px; right:10px; padding:5px 9px; border-radius:999px; background:rgba(0,0,0,0.55); color:#ffffff; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; line-height:1">1 / 2</span>
+          </div>
+          <figcaption style="margin-top:7px; font-size:12px; line-height:1.4; color:#6b6b70">Boîtier IP55 monté en cuisine — vue extérieure</figcaption>
+        </figure>
+        <figure style="margin:0; flex:0 0 calc(100% - 28px); scroll-snap-align:start">
+          <div style="position:relative; aspect-ratio:3/4; border-radius:16px; overflow:hidden; background:#f0f0f2; box-sizing:border-box">
+            <img src="assets/image36-rot.jpg" alt="Installation finale" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:contain">
+            <span style="position:absolute; top:10px; right:10px; padding:5px 9px; border-radius:999px; background:rgba(0,0,0,0.55); color:#ffffff; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; line-height:1">2 / 2</span>
+          </div>
+          <figcaption style="margin-top:7px; font-size:12px; line-height:1.4; color:#6b6b70">Installation finale</figcaption>
+        </figure>
+        <div aria-hidden="true" style="flex:0 0 10px"></div>
+      </div>
+      <div style="margin-top:12px; display:flex; align-items:center; justify-content:space-between; gap:12px">
+        <div style="display:flex; align-items:center; gap:6px">
+          <span style="display:block; height:6px; border-radius:3px; transition:width 0.3s, background-color 0.3s; width:{{ sl.frigoBox.w0 }}; background:{{ sl.frigoBox.c0 }}"></span>
+          <span style="display:block; height:6px; border-radius:3px; transition:width 0.3s, background-color 0.3s; width:{{ sl.frigoBox.w1 }}; background:{{ sl.frigoBox.c1 }}"></span>
+          <span style="margin-left:6px; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; letter-spacing:0.04em; color:#6b6b70">Glisser →</span>
+        </div>
+        <div style="display:flex; gap:8px">
+          <button type="button" aria-label="Image précédente" data-target="frigoBox" data-dir="-1" onClick="{{ slideBtn }}" style="width:36px; height:36px; border-radius:50%; border:0; padding:0; background:#f0f0f2; color:#0b0b0c; font-size:18px; line-height:1; cursor:pointer; transition:opacity 0.2s, transform 0.12s ease-out; opacity:{{ sl.frigoBox.prev }}" style-active="transform:scale(0.96)">‹</button>
+          <button type="button" aria-label="Image suivante" data-target="frigoBox" data-dir="1" onClick="{{ slideBtn }}" style="width:36px; height:36px; border-radius:50%; border:0; padding:0; background:#f0f0f2; color:#0b0b0c; font-size:18px; line-height:1; cursor:pointer; transition:opacity 0.2s, transform 0.12s ease-out; opacity:{{ sl.frigoBox.next }}" style-active="transform:scale(0.96)">›</button>
+        </div>
+      </div>
+    </div>
+    <div data-reveal="1" style="margin-top:40px">
+      <p style="margin:0; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:#6b6b70">Frigo Connecté</p>
+      <h2 style="margin:8px 0 0; font-size:30px; font-weight:700; letter-spacing:-0.03em; line-height:1.08">Les sondes de température DS18B20</h2>
+    </div>
+    <div data-reveal="1" style="margin-top:18px">
+      <div data-slider="frigoSondes" onScroll="{{ onSlide }}" style="display:flex; gap:10px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; margin:0 -20px; padding:0 20px; scroll-padding:0 20px; overscroll-behavior-x:contain">
+        <figure style="margin:0; flex:0 0 calc(100% - 28px); scroll-snap-align:start">
+          <div style="position:relative; aspect-ratio:4/3; border-radius:16px; overflow:hidden; background:#f0f0f2">
+            <img src="assets/image31.jpg" alt="Sonde DS18B20 — Chambre positive (+2°C)" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:contain">
+            <span style="position:absolute; top:10px; right:10px; padding:5px 9px; border-radius:999px; background:rgba(0,0,0,0.55); color:#ffffff; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; line-height:1">1 / 2</span>
+          </div>
+          <figcaption style="margin-top:7px; font-size:12px; line-height:1.4; color:#6b6b70">Sonde DS18B20 — Chambre positive (+2°C)</figcaption>
+        </figure>
+        <figure style="margin:0; flex:0 0 calc(100% - 28px); scroll-snap-align:start">
+          <div style="position:relative; aspect-ratio:4/3; border-radius:16px; overflow:hidden; background:#f0f0f2">
+            <img src="assets/image32.jpg" alt="Sonde DS18B20 — Chambre négative (−18°C)" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:contain">
+            <span style="position:absolute; top:10px; right:10px; padding:5px 9px; border-radius:999px; background:rgba(0,0,0,0.55); color:#ffffff; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; line-height:1">2 / 2</span>
+          </div>
+          <figcaption style="margin-top:7px; font-size:12px; line-height:1.4; color:#6b6b70">Sonde DS18B20 — Chambre négative (−18°C)</figcaption>
+        </figure>
+        <div aria-hidden="true" style="flex:0 0 10px"></div>
+      </div>
+      <div style="margin-top:12px; display:flex; align-items:center; justify-content:space-between; gap:12px">
+        <div style="display:flex; align-items:center; gap:6px">
+          <span style="display:block; height:6px; border-radius:3px; transition:width 0.3s, background-color 0.3s; width:{{ sl.frigoSondes.w0 }}; background:{{ sl.frigoSondes.c0 }}"></span>
+          <span style="display:block; height:6px; border-radius:3px; transition:width 0.3s, background-color 0.3s; width:{{ sl.frigoSondes.w1 }}; background:{{ sl.frigoSondes.c1 }}"></span>
+          <span style="margin-left:6px; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; letter-spacing:0.04em; color:#6b6b70">Glisser →</span>
+        </div>
+        <div style="display:flex; gap:8px">
+          <button type="button" aria-label="Image précédente" data-target="frigoSondes" data-dir="-1" onClick="{{ slideBtn }}" style="width:36px; height:36px; border-radius:50%; border:0; padding:0; background:#f0f0f2; color:#0b0b0c; font-size:18px; line-height:1; cursor:pointer; transition:opacity 0.2s, transform 0.12s ease-out; opacity:{{ sl.frigoSondes.prev }}" style-active="transform:scale(0.96)">‹</button>
+          <button type="button" aria-label="Image suivante" data-target="frigoSondes" data-dir="1" onClick="{{ slideBtn }}" style="width:36px; height:36px; border-radius:50%; border:0; padding:0; background:#f0f0f2; color:#0b0b0c; font-size:18px; line-height:1; cursor:pointer; transition:opacity 0.2s, transform 0.12s ease-out; opacity:{{ sl.frigoSondes.next }}" style-active="transform:scale(0.96)">›</button>
+        </div>
+      </div>
+    </div>
+    <div data-reveal="1" style="margin-top:40px">
+      <p style="margin:0; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:#6b6b70">Frigo Connecté</p>
+      <h2 style="margin:8px 0 0; font-size:30px; font-weight:700; letter-spacing:-0.03em; line-height:1.08">Interface applicative</h2>
+    </div>
+    <div data-reveal="1" style="margin-top:18px">
+      <div data-slider="frigoApp" onScroll="{{ onSlide }}" style="display:flex; gap:10px; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; margin:0 -20px; padding:0 20px; scroll-padding:0 20px; overscroll-behavior-x:contain">
+        <figure style="margin:0; flex:0 0 calc(100% - 28px); scroll-snap-align:start">
+          <div style="position:relative; aspect-ratio:3/4; border-radius:16px; overflow:hidden; background:#f0f0f2; box-sizing:border-box">
+            <img src="assets/image38.jpg" alt="Application de visualisation" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:contain">
+            <span style="position:absolute; top:10px; right:10px; padding:5px 9px; border-radius:999px; background:rgba(0,0,0,0.55); color:#ffffff; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; line-height:1">1 / 2</span>
+          </div>
+          <figcaption style="margin-top:7px; font-size:12px; line-height:1.4; color:#6b6b70">Application de visualisation</figcaption>
+        </figure>
+        <figure style="margin:0; flex:0 0 calc(100% - 28px); scroll-snap-align:start">
+          <div style="position:relative; aspect-ratio:3/4; border-radius:16px; overflow:hidden; background:#f0f0f2; box-sizing:border-box">
+            <img src="assets/image37.jpg" alt="Notification en cas d'alerte." loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:contain">
+            <span style="position:absolute; top:10px; right:10px; padding:5px 9px; border-radius:999px; background:rgba(0,0,0,0.55); color:#ffffff; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; line-height:1">2 / 2</span>
+          </div>
+          <figcaption style="margin-top:7px; font-size:12px; line-height:1.4; color:#6b6b70">Notification en cas d'alerte.</figcaption>
+        </figure>
+        <div aria-hidden="true" style="flex:0 0 10px"></div>
+      </div>
+      <div style="margin-top:12px; display:flex; align-items:center; justify-content:space-between; gap:12px">
+        <div style="display:flex; align-items:center; gap:6px">
+          <span style="display:block; height:6px; border-radius:3px; transition:width 0.3s, background-color 0.3s; width:{{ sl.frigoApp.w0 }}; background:{{ sl.frigoApp.c0 }}"></span>
+          <span style="display:block; height:6px; border-radius:3px; transition:width 0.3s, background-color 0.3s; width:{{ sl.frigoApp.w1 }}; background:{{ sl.frigoApp.c1 }}"></span>
+          <span style="margin-left:6px; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; letter-spacing:0.04em; color:#6b6b70">Glisser →</span>
+        </div>
+        <div style="display:flex; gap:8px">
+          <button type="button" aria-label="Image précédente" data-target="frigoApp" data-dir="-1" onClick="{{ slideBtn }}" style="width:36px; height:36px; border-radius:50%; border:0; padding:0; background:#f0f0f2; color:#0b0b0c; font-size:18px; line-height:1; cursor:pointer; transition:opacity 0.2s, transform 0.12s ease-out; opacity:{{ sl.frigoApp.prev }}" style-active="transform:scale(0.96)">‹</button>
+          <button type="button" aria-label="Image suivante" data-target="frigoApp" data-dir="1" onClick="{{ slideBtn }}" style="width:36px; height:36px; border-radius:50%; border:0; padding:0; background:#f0f0f2; color:#0b0b0c; font-size:18px; line-height:1; cursor:pointer; transition:opacity 0.2s, transform 0.12s ease-out; opacity:{{ sl.frigoApp.next }}" style-active="transform:scale(0.96)">›</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="22 Frigo Connecté — Résultats &amp; Bilan" style="background:#000000; color:#f4f4f5; padding:48px 20px">
+    <div data-reveal="1">
+      <p style="margin:0; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:#8e8e96">Frigo Connecté</p>
+      <h2 style="margin:8px 0 0; font-size:30px; font-weight:700; letter-spacing:-0.03em; line-height:1.08">Résultats &amp; Bilan</h2>
+    </div>
+    <div data-reveal="1" style="margin-top:18px; padding:2px 16px; border-radius:18px; background:#161618">
+      <div style="display:flex; gap:12px; align-items:flex-start; padding:14px 0"><span style="width:20px; height:20px; margin-top:1px; border-radius:50%; background:#f4f4f5; display:flex; align-items:center; justify-content:center; flex:none"><span style="width:5px; height:9px; border-right:1.8px solid #000000; border-bottom:1.8px solid #000000; transform:translateY(-1px) rotate(45deg)"></span></span><span style="font-size:15.5px; font-weight:500; line-height:1.42">Déploiement réel en cuisine professionnelle, fonctionnel 24h/24 depuis la mise en service</span></div>
+      <div style="display:flex; gap:12px; align-items:flex-start; padding:14px 0; border-top:1px solid rgba(255,255,255,0.1)"><span style="width:20px; height:20px; margin-top:1px; border-radius:50%; background:#f4f4f5; display:flex; align-items:center; justify-content:center; flex:none"><span style="width:5px; height:9px; border-right:1.8px solid #000000; border-bottom:1.8px solid #000000; transform:translateY(-1px) rotate(45deg)"></span></span><span style="font-size:15.5px; font-weight:500; line-height:1.42">Surveillance simultanée de deux chambres froides (−18°C et +2°C) avec précision ±0,5°C</span></div>
+      <div style="display:flex; gap:12px; align-items:flex-start; padding:14px 0; border-top:1px solid rgba(255,255,255,0.1)"><span style="width:20px; height:20px; margin-top:1px; border-radius:50%; background:#f4f4f5; display:flex; align-items:center; justify-content:center; flex:none"><span style="width:5px; height:9px; border-right:1.8px solid #000000; border-bottom:1.8px solid #000000; transform:translateY(-1px) rotate(45deg)"></span></span><span style="font-size:15.5px; font-weight:500; line-height:1.42">Alertes multi-canaux : buzzer local + notification push Blynk, sans fausse alerte</span></div>
+      <div style="display:flex; gap:12px; align-items:flex-start; padding:14px 0; border-top:1px solid rgba(255,255,255,0.1)"><span style="width:20px; height:20px; margin-top:1px; border-radius:50%; background:#f4f4f5; display:flex; align-items:center; justify-content:center; flex:none"><span style="width:5px; height:9px; border-right:1.8px solid #000000; border-bottom:1.8px solid #000000; transform:translateY(-1px) rotate(45deg)"></span></span><span style="font-size:15.5px; font-weight:500; line-height:1.42">Conception complète : schéma électronique, soudure PCB, boîtier étanche, firmware C++</span></div>
+      <div style="display:flex; gap:12px; align-items:flex-start; padding:14px 0; border-top:1px solid rgba(255,255,255,0.1)"><span style="width:20px; height:20px; margin-top:1px; border-radius:50%; background:#f4f4f5; display:flex; align-items:center; justify-content:center; flex:none"><span style="width:5px; height:9px; border-right:1.8px solid #000000; border-bottom:1.8px solid #000000; transform:translateY(-1px) rotate(45deg)"></span></span><span style="font-size:15.5px; font-weight:500; line-height:1.42">Coût de revient &lt; 40€ vs systèmes commerciaux équivalents à 300-500</span></div>
+    </div>
+  </section>
+</div>
+
+<section id="contact" data-screen-label="23 Me contacter" style="background:#ffffff; color:#0b0b0c; padding:56px 20px 0">
+  <div data-reveal="1">
+    <p style="margin:0; font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:#6b6b70">Edgar Chopard</p>
+    <h2 style="margin:8px 0 0; font-size:44px; font-weight:700; letter-spacing:-0.045em; line-height:0.98">Me contacter</h2>
+  </div>
+  <div data-reveal="1" style="margin-top:24px; border-top:1px solid rgba(0,0,0,0.12)">
+    <a href="mailto:edgar.chopard@gmail.com" onClick="{{ copyMail }}" aria-label="Copier l'adresse e-mail edgar.chopard@gmail.com" style="display:flex; flex-direction:column; gap:4px; padding:16px 0; border-bottom:1px solid rgba(0,0,0,0.12); color:#0b0b0c; text-decoration:none">
+      <span style="font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:#6b6b70">E-mail</span>
+      <span style="display:flex; align-items:center; justify-content:space-between; gap:10px"><span style="min-width:0; font-size:19px; font-weight:650; letter-spacing:-0.02em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis">edgar.chopard@gmail.com</span><span ref="{{ copyRef }}" aria-live="polite" style="flex:none; width:78px; display:inline-flex; align-items:center; justify-content:center; height:30px; padding:0; border-radius:999px; font-size:13px; font-weight:500; letter-spacing:0; white-space:nowrap; background:{{ copyBg }}; color:{{ copyFg }}; transition:background-color 0.25s ease, color 0.25s ease">{{ copyLabel }}</span></span>
+    </a>
+    <a href="https://www.linkedin.com/in/edgar-chopard" target="_blank" rel="noopener noreferrer" style="display:flex; flex-direction:column; gap:4px; padding:16px 0; border-bottom:1px solid rgba(0,0,0,0.12); color:#0b0b0c; text-decoration:none">
+      <span style="font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:#6b6b70">LinkedIn</span>
+      <span style="font-size:19px; font-weight:650; letter-spacing:-0.02em; overflow-wrap:anywhere">linkedin.com/in/edgar-chopard ↗</span>
+    </a>
+    <a href="https://github.com/edgarcity?tab=repositories" target="_blank" rel="noopener" style="display:flex; flex-direction:column; gap:4px; padding:16px 0; border-bottom:1px solid rgba(0,0,0,0.12); color:#0b0b0c; text-decoration:none">
+      <span style="font-family:'Geist Mono',ui-monospace,Menlo,monospace; font-size:11px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:#6b6b70">GitHub</span>
+      <span style="font-size:19px; font-weight:650; letter-spacing:-0.02em; overflow-wrap:anywhere">github.com/edgarcity ↗</span>
+    </a>
+  </div>
+  <div style="margin-top:48px; padding:16px 0 28px; border-top:1px solid rgba(0,0,0,0.08); display:flex; align-items:center; justify-content:space-between; gap:12px; font-size:12px; color:#6b6b70">
+    <span>Edgar Chopard — Portfolio</span>
+    <a href="#top" onClick="{{ jump }}" style="color:#0b0b0c; text-decoration:none">Retour en haut ↑</a>
+  </div>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { menu: false, active: null };
+  headerRef = React.createRef();
+  copyRef = React.createRef();
+  chapters = ['mini-tank-rc', 'lit-connecte', 'cyberline', 'frigo-connecte'];
+
+  componentDidMount() {
+    if (window.self === window.top && window.innerWidth >= 600) {
+      location.replace(encodeURI('Portfolio Edgar Chopard.dc.html') + location.search + location.hash);
+      return;
+    }
+    this.onScroll = () => {
+      if (this.raf) return;
+      this.raf = requestAnimationFrame(() => { this.raf = 0; this.spy(); });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.spy();
+    this.intro();
+    this.setupReveal();
+  }
+
+  componentWillUnmount() {
+    if (this.onScroll) window.removeEventListener('scroll', this.onScroll);
+    if (this.raf) cancelAnimationFrame(this.raf);
+    if (this.io) this.io.disconnect();
+  }
+
+  reducedMotion() {
+    return !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  }
+
+  navH() { return 48; }
+
+  spy() {
+    const sc = window.scrollY > 4;
+    if (sc !== this.state.scrolled) this.setState({ scrolled: sc });
+    const probe = this.navH() + window.innerHeight * 0.3;
+    let active = null;
+    for (const id of this.chapters) {
+      const el = document.getElementById(id);
+      if (!el) continue;
+      const r = el.getBoundingClientRect();
+      if (r.top <= probe && r.bottom > probe) { active = id; break; }
+    }
+    if (active !== this.state.active) this.setState({ active });
+  }
+
+  jump = (e) => {
+    const href = e.currentTarget.getAttribute('href') || '';
+    if (href.charAt(0) !== '#') return;
+    const el = document.getElementById(href.slice(1));
+    if (!el) return;
+    e.preventDefault();
+    this.setState({ menu: false });
+    const top = href === '#top' ? 0 : Math.max(0, el.getBoundingClientRect().top + window.scrollY - this.navH());
+    window.scrollTo({ top, behavior: this.reducedMotion() ? 'auto' : 'smooth' });
+  };
+
+  toggleMenu = () => this.setState((s) => ({ menu: !s.menu }));
+
+  sliders = { tankHero: 2, tankElec: 2, tankFpv: 2, tankCarbon: 2, litInstall: 2, litPcb: 2, litShortcut: 2, litCells: 2, cyberViews: 3, cyberCad: 2, cyberApp: 2, cyberProto: 2, frigoCircuit: 2, frigoBox: 2, frigoSondes: 2, frigoApp: 2 };
+  darkSliders = { tankElec: 1, tankFpv: 1, tankCarbon: 1, litPcb: 1, litShortcut: 1, cyberViews: 1, cyberApp: 1, cyberProto: 1, frigoCircuit: 1 };
+
+  slideStep(t) {
+    const first = t.querySelector('figure');
+    return first ? first.offsetWidth + 10 : t.clientWidth;
+  }
+
+  onSlide = (e) => {
+    const t = e.currentTarget;
+    const id = t.getAttribute('data-slider');
+    const n = this.sliders[id] || 1;
+    const i = Math.max(0, Math.min(n - 1, Math.round(t.scrollLeft / this.slideStep(t))));
+    if ((this.state.sl || {})[id] !== i) this.setState((s) => ({ sl: Object.assign({}, s.sl, { [id]: i }) }));
+  };
+
+  slideBtn = (e) => {
+    const b = e.currentTarget;
+    const t = document.querySelector('[data-slider="' + b.getAttribute('data-target') + '"]');
+    if (!t) return;
+    const dir = Number(b.getAttribute('data-dir'));
+    const max = t.scrollWidth - t.clientWidth;
+    const atEdge = dir < 0 ? t.scrollLeft <= 2 : t.scrollLeft >= max - 2;
+    if (atEdge) {
+      if (!this.reducedMotion() && t.animate) t.animate([{ transform: 'none' }, { transform: 'translateX(' + (-dir * 14) + 'px)' }, { transform: 'none' }], { duration: 460, easing: 'cubic-bezier(.32,.72,0,1)' });
+      return;
+    }
+    t.scrollBy({ left: this.slideStep(t) * dir, behavior: this.reducedMotion() ? 'auto' : 'smooth' });
+  };
+
+  sliderVals() {
+    const out = {};
+    const cur = this.state.sl || {};
+    Object.keys(this.sliders).forEach((id) => {
+      const n = this.sliders[id], i = cur[id] || 0, dark = !!this.darkSliders[id];
+      const o = { prev: i === 0 ? '0.35' : '1', next: i === n - 1 ? '0.35' : '1' };
+      for (let x = 0; x < n; x++) {
+        o['w' + x] = x === i ? '20px' : '6px';
+        o['c' + x] = x === i ? (dark ? '#f4f4f5' : '#0b0b0c') : (dark ? 'rgba(255,255,255,0.28)' : 'rgba(0,0,0,0.2)');
+      }
+      out[id] = o;
+    });
+    return out;
+  }
+
+  intro() {
+    if (this.reducedMotion()) return;
+    document.querySelectorAll('[data-intro]').forEach((el) => {
+      const i = Number(el.getAttribute('data-intro')) || 0;
+      if (!el.animate) return;
+      el.animate(
+        [{ opacity: 0, transform: 'translateY(14px)' }, { opacity: 1, transform: 'none' }],
+        { duration: 900, delay: 100 + i * 100, easing: 'cubic-bezier(.16,.84,.24,1)', fill: 'backwards' }
+      );
+    });
+  }
+
+  setupReveal() {
+    if (this.reducedMotion() || !('IntersectionObserver' in window)) return;
+    this.io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (!en.isIntersecting) return;
+        en.target.style.opacity = '1';
+        en.target.style.transform = 'none';
+        this.io.unobserve(en.target);
+      });
+    }, { rootMargin: '0px 0px -6% 0px', threshold: 0.01 });
+    const limit = window.innerHeight * 0.94;
+    document.querySelectorAll('[data-reveal]').forEach((el) => {
+      if (el.getBoundingClientRect().top < limit) return;
+      el.style.transition = 'opacity 0.7s cubic-bezier(.16,.84,.24,1), transform 0.7s cubic-bezier(.16,.84,.24,1)';
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(18px)';
+      this.io.observe(el);
+    });
+  }
+
+  copyMail = (e) => {
+    e.preventDefault();
+    const mail = 'edgar.chopard@gmail.com';
+    const done = () => {
+      clearTimeout(this.copyTimer);
+      this.setState({ copied: true });
+      const el = this.copyRef.current;
+      if (el && el.animate && !this.reducedMotion()) el.animate([{ transform: 'scale(0.96)' }, { transform: 'scale(1)' }], { duration: 300, easing: 'cubic-bezier(.32,.72,0,1)' });
+      this.copyTimer = setTimeout(() => this.setState({ copied: false }), 2200);
+    };
+    const fallback = () => {
+      const t = document.createElement('textarea');
+      t.value = mail; t.setAttribute('readonly', ''); t.style.position = 'fixed'; t.style.opacity = '0';
+      document.body.appendChild(t); t.select();
+      try { document.execCommand('copy'); } catch (err) {}
+      document.body.removeChild(t); done();
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(mail).then(done, fallback);
+    else fallback();
+  };
+
+  renderVals() {
+    const a = this.state.active;
+    const col = (id) => (a === id ? '#1a66e0' : '#0b0b0c');
+    const open = this.state.menu;
+    return {
+      jump: this.jump,
+      copyMail: this.copyMail,
+      copyRef: this.copyRef,
+      copyLabel: this.state.copied ? '✓ Copié' : 'Copier',
+      copyBg: this.state.copied ? '#0b0b0c' : '#f0f0f2',
+      copyFg: this.state.copied ? '#ffffff' : '#3a3a3e',
+      headerRef: this.headerRef,
+      hdrShadow: this.state.scrolled ? '0 1px 0 rgba(0,0,0,0.06), 0 10px 24px -14px rgba(0,0,0,0.18)' : '0 0 0 rgba(0,0,0,0)',
+      toggleMenu: this.toggleMenu,
+      onSlide: this.onSlide,
+      slideBtn: this.slideBtn,
+      sl: this.sliderVals(),
+      menu: open,
+      menuHidden: open ? 'false' : 'true',
+      menuPad: open ? '4px 20px 14px' : '0px 20px 0px',
+      menuH: open ? '260px' : '0px',
+      menuO: open ? '1' : '0',
+      menuT: open ? 'none' : 'translateY(-6px) scale(0.98)',
+      menuPE: open ? 'auto' : 'none',
+      menuTr: this.reducedMotion() ? 'opacity 0.2s ease' : 'max-height 0.38s cubic-bezier(.32,.72,0,1), padding 0.38s cubic-bezier(.32,.72,0,1), opacity 0.25s ease, transform 0.38s cubic-bezier(.32,.72,0,1)',
+      bar1: open ? 'translateY(3.25px) rotate(45deg)' : 'none',
+      bar2: open ? 'translateY(-3.25px) rotate(-45deg)' : 'none',
+      nav: { tank: col('mini-tank-rc'), lit: col('lit-connecte'), cyber: col('cyberline'), frigo: col('frigo-connecte') },
+      beep: React.createElement('span', {
+        'aria-hidden': 'true',
+        style: { display: 'inline-block', width: 9, height: 9, borderRadius: '50%', flex: 'none', background: '#f5a524', animation: 'edgarBlink 1s linear infinite' },
+      }),
+    };
+  }
+}
+</script>
+</body>
+</html>
