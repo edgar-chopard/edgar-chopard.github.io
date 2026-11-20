@@ -86,8 +86,9 @@
       ]);
       this.T = THREE;
       this.reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const coarse = this.hasAttribute('compact') || !!(window.matchMedia && window.matchMedia('(hover: none) and (pointer: coarse)').matches);
       const renderer = new THREE.WebGLRenderer({ canvas: this.canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
-      renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
+      renderer.setPixelRatio(Math.min(devicePixelRatio || 1, coarse ? 1.5 : 2));
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
       renderer.toneMappingExposure = 1.05;
       this.renderer = renderer;
@@ -146,7 +147,7 @@
 
       this.rAssembled = manifest.rA || 120; this.rExploded = manifest.rE || 175;
       this.look = manifest.look || null; this.shadowDrop = manifest.shadowDrop || 36;
-      this.yaw = Math.PI - 0.65; this.pitch = 0.42; this.vy = 0; this.vp = 0;
+      this.yaw = this.yawGoal = Math.PI - 0.65; this.pitch = 0.42; this.vy = 0; this.vp = 0;
       this.x = 0; this.v = 0; this.lastT = 0; this.idle = 0;
       this.bindInput(); this.bindScroll();
       this.ro = new ResizeObserver(() => this.resize()); this.ro.observe(this);
@@ -160,6 +161,8 @@
 
     resize() {
       const w = this.clientWidth || 1, h = this.clientHeight || 1;
+      if (w === this._w && h === this._h) return;
+      this._w = w; this._h = h;
       this.renderer.setSize(w, h, false);
       this.camera.aspect = w / h;
       this.camera.updateProjectionMatrix();
@@ -259,7 +262,12 @@
       // touch devices: no manual rotation — the model turns on its own and with the page scroll
       if (this.touchOnly) {
         const sy = window.scrollY, d = sy - this.lastSY; this.lastSY = sy;
-        if (!this.reduced) this.yaw += dt * 0.35 + clamp(d, -120, 120) * 0.006;
+        if (!this.reduced) {
+          // iOS livre le défilement par à-coups (0 px une image, 40 px la suivante) :
+          // on accumule dans un objectif et on le rejoint en douceur au lieu de l'appliquer brut.
+          this.yawGoal += dt * 0.35 + clamp(d, -120, 120) * 0.006;
+          this.yaw += (this.yawGoal - this.yaw) * (1 - Math.exp(-dt * 7));
+        }
         return true;
       }
       // rotation: inertia, then gentle auto-turn when idle
@@ -293,7 +301,9 @@
       else cam.lookAt(0, 26 * ex - 16, 0);
       const lb = this.btn.querySelector('.lb'), want = x > 0.5 ? 'Assembler' : 'Éclater';
       if (lb.textContent !== want) lb.textContent = want;
-      const o = 3 * ex;
+      const o = Math.round(3 * ex * 10) / 10;
+      if (o === this._o) { this.renderer.render(this.scene, cam); return; }
+      this._o = o;
       this.icons[0].style.transform = `translate(${-o}px,${-o}px)`; this.icons[1].style.transform = `translate(${o}px,${-o}px)`;
       this.icons[2].style.transform = `translate(${-o}px,${o}px)`; this.icons[3].style.transform = `translate(${o}px,${o}px)`;
       this.renderer.render(this.scene, cam);
