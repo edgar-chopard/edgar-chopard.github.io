@@ -809,7 +809,7 @@ class Component extends DCLogic {
 
   componentDidMount() {
     if (window.self === window.top && window.innerWidth < 600) {
-      location.replace(encodeURI('Portfolio Edgar Chopard Mobile.dc.html') + location.search + location.hash);
+      location.replace('mobile.html' + location.search + location.hash);
       return;
     }
     this.onResize = () => { if (window.innerWidth !== this.state.vw) this.setState({ vw: window.innerWidth }); };
@@ -823,6 +823,26 @@ class Component extends DCLogic {
     this.spy();
     this.intro();
     this.setupReveal();
+    this.goHash();
+  }
+
+  goHash() {
+    const id = decodeURIComponent((location.hash || '').slice(1));
+    if (!id || !document.getElementById(id)) return;
+    let stop = false;
+    const cancel = () => { stop = true; };
+    ['wheel', 'touchstart', 'keydown'].forEach((t) => window.addEventListener(t, cancel, { once: true, passive: true }));
+    const go = () => {
+      if (stop) return;
+      const el = document.getElementById(id);
+      if (!el) return;
+      const top = id === 'top' ? 0 : Math.max(0, el.getBoundingClientRect().top + window.scrollY - this.navH());
+      window.scrollTo({ top, behavior: 'auto' });
+    };
+    requestAnimationFrame(go);
+    setTimeout(go, 400);
+    setTimeout(go, 1200);
+    if (document.readyState !== 'complete') window.addEventListener('load', go, { once: true });
   }
 
   componentDidUpdate(prev) {
